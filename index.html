@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f7f6f2">
+<meta name="application-name" content="Clarity Hackathon Prototype">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Clarity — medication safety, thoughtfully.">
+<title>Clarity — Medication Safety, Thoughtfully</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111113;--panel:#19181b;--panel2:#211e20;--line:#ffffff16;--line2:#ffffff25;--text:#f3e8dc;--muted:#aaa2a0;--dim:#797274;--amber:#f4b66f;--coral:#e98176;--red:#ff716d;--green:#8bc9a0;--serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 var(--sans);min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--amber);outline-offset:3px}button:disabled{opacity:.4;cursor:not-allowed}.app{min-height:100vh;display:grid;grid-template-columns:238px minmax(0,1fr)}.sidebar{border-right:1px solid var(--line);padding:28px 17px 22px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;background:linear-gradient(180deg,#191719,#121214 70%);z-index:4}.brand{padding:0 12px 30px}.brand-name{font:27px var(--serif);letter-spacing:-.8px}.brand-name span{color:var(--coral)}.brand-sub{color:var(--muted);font-size:12px;margin-top:3px}.nav-label{font-size:10px;letter-spacing:1.7px;color:#716a6d;padding:0 12px;margin:16px 0 8px}.nav{display:grid;gap:5px}.nav button{display:flex;align-items:center;gap:12px;padding:11px 12px;color:#b7afb0;background:transparent;border:1px solid transparent;border-radius:12px;text-align:left;transition:.2s}.nav button:hover{background:#ffffff08;color:var(--text)}.nav button.active{background:linear-gradient(110deg,#383033,#272326);border-color:#ffffff0c;color:#fff}.nav svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;flex-shrink:0}.sidebar-bottom{margin-top:auto;padding:18px 12px 0}.side-quote{font:22px/1.3 var(--serif);color:#d8c6b7}.side-quote span{color:var(--amber)}.side-note{font-size:11px;color:var(--muted);margin-top:13px;border-top:1px solid var(--line);padding-top:12px}.privacy{display:flex;gap:7px;align-items:center;color:#8dbb9b;font-size:11px;margin-top:22px}.dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}.main{min-width:0;overflow:hidden}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 42px;border-bottom:1px solid var(--line);gap:18px}.search{width:min(560px,60%);position:relative}.search input{width:100%;border:1px solid var(--line2);background:#ffffff06;border-radius:12px;padding:12px 15px 12px 42px;color:var(--text)}.search svg{position:absolute;left:14px;top:13px;width:17px;height:17px;stroke:var(--muted);fill:none;stroke-width:1.6}.top-actions{display:flex;align-items:center;gap:15px;color:var(--muted);font-size:12px}.icon-btn{width:39px;height:39px;border:1px solid var(--line2);border-radius:12px;background:#ffffff08;color:var(--text);font-size:21px}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ad7769,#e4bca0);color:#231a18;font-weight:700}.content{max-width:1600px;margin:0 auto;padding:32px 42px 42px}.hero{min-height:265px;position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:25px;padding:10px 4px 34px;overflow:hidden}.hero:before{content:"";position:absolute;right:-6%;top:-100px;width:64%;height:370px;background:radial-gradient(ellipse at 56% 28%,#eeb77a5e 0%,#d7797140 18%,transparent 48%),radial-gradient(ellipse at 65% 52%,#8e626c38 0%,transparent 48%);filter:blur(16px);pointer-events:none}.hero:after{content:"";position:absolute;right:8%;top:7px;width:55%;height:245px;opacity:.62;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 700 300'%3E%3Cpath d='M0 220 C130 220 140 20 310 75 S490 280 700 0' fill='none' stroke='%23e7a67f' stroke-opacity='.65' stroke-width='1.2'/%3E%3Cpath d='M10 240 C140 180 160 30 320 95 S480 240 700 25' fill='none' stroke='%23e98176' stroke-opacity='.6' stroke-width='2'/%3E%3Cpath d='M60 260 C170 210 190 65 330 115 S500 210 690 60' fill='none' stroke='%23f4b66f' stroke-opacity='.35' stroke-width='5'/%3E%3C/svg%3E") center/contain no-repeat;pointer-events:none}.hero-copy{position:relative;z-index:1;max-width:630px}.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:700}.hero h1{font:clamp(35px,3.8vw,52px)/1.12 var(--serif);letter-spacing:-1.6px;margin:13px 0 12px;font-weight:400}.hero h1 em{font-style:normal;color:var(--amber)}.hero p{color:#b9b0ad;max-width:520px;font-size:14px;margin:0 0 24px}.primary{border:0;border-radius:999px;padding:13px 19px;background:linear-gradient(110deg,#f7d0a0,#f2b46c);color:#211a17;font-weight:700;display:inline-flex;align-items:center;gap:12px;box-shadow:0 8px 30px #f4b66f14;transition:transform .2s,filter .2s}.primary:hover{transform:translateY(-2px);filter:brightness(1.06)}.secondary{border:1px solid var(--line2);background:#ffffff07;color:var(--text);border-radius:10px;padding:10px 13px}.hero-quote{position:relative;z-index:1;max-width:160px;margin:16px 3% 0 0;font:25px/1.28 var(--serif);text-align:right}.hero-quote:after{content:"";display:block;width:45px;border-top:1px solid var(--amber);margin:17px 0 0 auto}.steps{display:flex;align-items:center;gap:10px;margin:-7px 0 25px;color:var(--muted);font-size:11px;max-width:740px}.step{display:flex;align-items:center;gap:9px;flex:1}.step-num{width:29px;height:29px;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;color:var(--text);background:#ffffff07;flex-shrink:0}.step-line{height:1px;background:var(--line2);flex:1;min-width:10px}.grid{display:grid;grid-template-columns:1.08fr 1fr 1fr;gap:14px}.card{background:linear-gradient(145deg,#1c1a1d,#171619);border:1px solid var(--line);border-radius:15px;padding:19px;min-width:0;position:relative;overflow:hidden}.card:where(.glow){background:radial-gradient(ellipse at 95% 0%,#b4775a19,transparent 50%),linear-gradient(145deg,#211c1d,#171619)}.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.card-title{font:20px var(--serif);letter-spacing:-.3px}.muted{color:var(--muted)}.tiny{font-size:11px}.text-link{color:#e7c5a1;background:transparent;border:0;padding:0;font-size:12px}.recent{grid-row:span 2}.patient-row{display:flex;align-items:center;gap:11px;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}.patient-row:hover .patient-name{color:var(--amber)}.initials{width:37px;height:37px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#3b3436,#292629);color:#e8d6c7;border:1px solid #ffffff12;font-size:12px;flex-shrink:0}.patient-info{min-width:0;flex:1}.patient-name{font-size:13px;color:var(--text);transition:color .2s}.patient-date{font-size:10px;color:var(--muted);margin-top:2px}.pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:5px 9px;font-size:10px;white-space:nowrap;border:1px solid}.pill.high{color:#ff8983;background:#ff716d12;border-color:#ff716d5c}.pill.moderate{color:#f3bc7d;background:#f4b66f12;border-color:#f4b66f50}.pill.low{color:#a7d9b4;background:#8bc9a012;border-color:#8bc9a044}.pill.neutral{color:#bcb4b3;background:#ffffff06;border-color:var(--line2)}.risk-card{min-height:232px}.risk-content{display:flex;align-items:center;justify-content:space-around;gap:12px;min-height:150px}.donut{width:145px;height:145px;border-radius:50%;background:conic-gradient(var(--line2) 0 100%);display:grid;place-items:center;position:relative;flex-shrink:0}.donut:before{content:"";position:absolute;inset:9px;border-radius:50%;background:#1a181b}.donut-inner{position:relative;text-align:center}.donut-number{font:43px var(--serif)}.donut-label{font-size:11px;color:var(--muted);max-width:75px;line-height:1.3}.legend{display:grid;gap:12px}.legend-row{display:flex;align-items:center;gap:9px;font-size:12px;color:#c5bdbc}.legend-row strong{font-weight:500;color:var(--text);min-width:12px}.legend-dot{width:8px;height:8px;border-radius:50%}.context-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:4px 0 14px;border-bottom:1px solid var(--line)}.context-stats span{display:block;color:var(--muted);font-size:10px}.context-stats strong{display:block;font:17px var(--serif);margin-top:3px}.context-body{padding-top:12px;font-size:12px}.context-body strong{display:block;font-weight:500;margin-top:4px}.full-link{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line2);border-radius:9px;padding:9px 11px;color:#d2c7c3;margin-top:14px;background:#ffffff04;font-size:11px;cursor:pointer}.highlight{grid-column:2/4;min-height:160px;display:flex;align-items:center;gap:20px;background:radial-gradient(ellipse at 95% 50%,#a94f4433,transparent 40%),linear-gradient(120deg,#241d1e,#1a181b);border-color:#e8a08042}.highlight:after{content:"";position:absolute;right:-30px;top:-100px;width:260px;height:300px;background:radial-gradient(ellipse,#f0807140,transparent 67%);pointer-events:none}.highlight-main{flex:1;min-width:0;position:relative;z-index:1}.highlight-title{font:21px var(--serif);margin:0 0 9px}.pair{font:23px var(--serif);margin:0 0 6px}.pair span{color:var(--amber);padding:0 7px}.highlight-desc{color:#c5b9b8;font-size:12px;max-width:540px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.tag{font-size:10px;border:1px solid var(--line2);border-radius:999px;padding:4px 9px;color:#bfb4b4}.arrow-btn{position:relative;z-index:1;width:40px;height:40px;border:1px solid var(--line2);border-radius:50%;background:#ffffff08;color:var(--text);font-size:18px}.metric{min-height:130px}.metric-value{font:36px var(--serif);margin:4px 0}.metric-label{color:var(--muted);font-size:11px}.metric-foot{margin-top:15px;font-size:10px;color:#c0b7b6}.metric-foot span{color:var(--coral);padding-right:6px}.notice{margin-top:18px;border:1px solid #f4b66f30;background:#f4b66f08;color:#c9b9aa;border-radius:10px;padding:11px 13px;font-size:10px;display:flex;gap:9px;align-items:flex-start}.notice strong{color:#f0c79a}.page-title{font:38px var(--serif);font-weight:400;margin:4px 0 8px}.page-intro{color:var(--muted);max-width:680px;margin:0 0 25px}.page-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px;flex-wrap:wrap}.field{display:grid;gap:6px}.field label{font-size:11px;color:#bcb1b0}.field input,.field select,.field textarea{width:100%;background:#111113;border:1px solid var(--line2);border-radius:9px;padding:11px 12px;color:var(--text)}.field input::placeholder,.field textarea::placeholder{color:#777073}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-grid .wide{grid-column:1/-1}.form-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:17px}.med-chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.med-chip{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line2);border-radius:10px;background:#ffffff05;font-size:12px}.med-chip button{background:transparent;color:var(--muted);border:0;font-size:16px;padding:0 2px}.interaction-list{display:grid;gap:12px}.interaction-item{border:1px solid var(--line);background:#ffffff03;border-radius:13px;padding:16px}.interaction-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.interaction-pair{font:20px var(--serif);margin-bottom:5px}.interaction-item p{font-size:12px;color:#c0b7b6;margin:8px 0}.interaction-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}.empty{padding:35px 20px;text-align:center;border:1px dashed var(--line2);border-radius:13px;color:var(--muted)}.empty strong{display:block;color:var(--text);font:22px var(--serif);margin-bottom:6px}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:500px}.table th,.table td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--line);font-size:12px}.table th{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:500}.table td{color:#d5cbca}.table tr:last-child td{border-bottom:0}.report-paper{background:#f4eee7;color:#252022;border-radius:13px;padding:30px;max-width:900px}.report-paper h2{font:32px var(--serif);font-weight:400;margin:0}.report-paper .muted{color:#746a68}.report-paper .report-line{border-top:1px solid #d9cec4;margin:18px 0}.report-paper .interaction-item{border-color:#d9cec4;background:#fffaf5}.report-paper .interaction-pair{color:#272022}.report-paper .interaction-item p{color:#5c5250}.report-paper .pill{background:transparent}.toast{position:fixed;right:22px;bottom:22px;z-index:20;padding:13px 17px;background:#292528;border:1px solid var(--line2);border-radius:12px;box-shadow:0 12px 40px #0007;color:var(--text);max-width:350px;animation:rise .25s ease}@keyframes rise{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}.mobile-menu{display:none}.hidden{display:none!important}.page{animation:fade .25s ease}@keyframes fade{from{opacity:.55;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(max-width:1150px){.app{grid-template-columns:205px minmax(0,1fr)}.content{padding:28px 25px}.topbar{padding:0 25px}.grid{grid-template-columns:1fr 1fr}.recent{grid-row:span 2}.highlight{grid-column:1/-1}.metric{min-height:120px}.hero-quote{display:none}}
+@media(max-width:760px){.app{display:block}.sidebar{position:fixed;left:-260px;top:0;width:238px;transition:left .25s;box-shadow:15px 0 40px #0006}.sidebar.open{left:0}.mobile-menu{display:inline-grid;place-items:center;width:38px;height:38px;border:1px solid var(--line2);background:#ffffff06;color:var(--text);border-radius:10px}.topbar{height:66px;padding:0 16px;gap:10px}.search{width:auto;flex:1}.search input{padding:10px 10px 10px 34px;font-size:12px}.search svg{left:10px;top:11px}.top-actions .date{display:none}.top-actions{gap:8px}.top-actions .icon-btn{width:34px;height:34px}.content{padding:24px 15px}.hero{min-height:0;padding-bottom:27px}.hero h1{font-size:37px}.hero p{font-size:13px}.steps{overflow:auto;padding-bottom:7px}.step{min-width:125px}.step-line{min-width:12px}.grid{grid-template-columns:1fr}.recent{grid-row:auto}.highlight{grid-column:auto}.risk-content{justify-content:space-evenly}.card{padding:16px}.form-grid{grid-template-columns:1fr}.form-grid .wide{grid-column:auto}.page-title{font-size:32px}.report-paper{padding:19px}.report-paper h2{font-size:27px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Clarity v0.4 — light-first clinical design system */
+:root{
+ --bg:#F5F6F3;
+ --panel:#FFFFFF;
+ --panel2:#F0F2EF;
+ --line:#E2E6E1;
+ --line2:#CCD4CE;
+ --text:#1E2A2A;
+ --muted:#5D6A68;
+ --dim:#77827F;
+ --amber:#A96522;
+ --coral:#B94F47;
+ --red:#A92F32;
+ --green:#28734B;
+ color-scheme:light;
+}
+body{background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+.sidebar{background:#FCFCFA;border-right:1px solid var(--line);box-shadow:none}
+.brand-name{color:#1E2A2A}
+.brand-name span{color:var(--coral)}
+.brand-sub,.nav-label,.side-note,.patient-date,.muted,.metric-label,.metric-foot,.context-stats span,.field label{color:var(--muted)}
+.nav-label{letter-spacing:1.35px;font-size:10px}
+.nav button{color:#465451;border-color:transparent;border-radius:9px}
+.nav button:hover{background:#F0F2EF;color:#1E2A2A}
+.nav button.active{background:#E9EFEB;border-color:#DCE5DF;color:#1E4237;font-weight:600}
+.nav button svg{stroke-width:1.8}
+.side-quote{color:#33413E}
+.side-quote span{color:var(--amber)}
+.side-note{border-color:var(--line)}
+.privacy{color:#28734B}
+.topbar{background:#FCFCFA;border-bottom:1px solid var(--line)}
+.search input{background:#FFFFFF;border-color:var(--line2);color:var(--text)}
+.search input::placeholder{color:#7B8582}
+.search svg{stroke:#687571}
+.icon-btn,.mobile-menu{background:#FFFFFF;border-color:var(--line2);color:var(--text)}
+.avatar{background:#E9D4C2;color:#4C3020}
+.content{padding-top:34px}
+.hero{min-height:245px;padding-top:12px;padding-bottom:30px}
+.hero:before{right:-4%;top:-90px;width:58%;height:320px;background:radial-gradient(ellipse at 56% 28%,#D8B58C26 0%,#C97B6E12 24%,transparent 56%);filter:blur(12px)}
+.hero:after{opacity:.22}
+.eyebrow{color:#946024;letter-spacing:1.7px}
+.hero h1{color:#1E2A2A;letter-spacing:-1.25px}
+.hero h1 em{color:#A96522}
+.hero p{color:#52615D;line-height:1.7}
+.primary{background:#244E43;color:#FFFFFF;box-shadow:none;border-radius:9px;padding:12px 17px}
+.primary:hover{filter:brightness(1.08)}
+.secondary{background:#FFFFFF;border-color:var(--line2);color:#2A3936;border-radius:9px}
+.secondary:hover{background:#F5F7F4}
+.steps{color:#586662}
+.step-num{background:#FFFFFF;border-color:var(--line2);color:#2A3936}
+.step-line{background:var(--line2)}
+.card{background:#FFFFFF;border:1px solid var(--line);border-radius:12px;box-shadow:0 2px 8px #24352C05}
+.card:where(.glow){background:#FFFFFF}
+.card-title{color:#22312E}
+.card-head{margin-bottom:18px}
+.patient-row{border-top-color:#E8ECE8}
+.patient-row:hover{background:#F8FAF7}
+.patient-name{color:#253431}
+.initials{background:#EDF1ED;color:#344740;border-color:#DFE6E0}
+.pill{font-weight:600}
+.pill.high{color:#8F2529;background:#FCEBEC;border-color:#F0C7C8}
+.pill.moderate{color:#815014;background:#FFF4E3;border-color:#F0D9B4}
+.pill.low{color:#236443;background:#EAF6EE;border-color:#C9E5D1}
+.pill.neutral{color:#52615D;background:#F2F4F1;border-color:#E0E5DF}
+.donut{background:conic-gradient(#B94F47 0 25%,#D39A43 25% 66%,#9AA5A0 66% 100%)}
+.donut:before{background:#FFFFFF}
+.donut-label{color:#596662}
+.legend-row{color:#53615D}
+.legend-row strong{color:#1E2A2A}
+.highlight{background:#FFFCF8;border-color:#EADFD2}
+.highlight:after{background:radial-gradient(ellipse,#D88B6E14,transparent 67%)}
+.highlight-title,.pair{color:#24332F}
+.highlight-desc{color:#53615D;line-height:1.65}
+.tag{border-color:#DDE4DE;color:#52615D;background:#FFFFFF}
+.arrow-btn{background:#FFFFFF;border-color:var(--line2);color:#244E43}
+.metric-value{color:#1F342D}
+.metric-foot span{color:#A96522}
+.notice{border-color:#E5D4B7;background:#FFF8EA;color:#5B5142;border-radius:10px;line-height:1.55}
+.notice strong{color:#815014}
+.page-title{color:#1E2A2A;letter-spacing:-.8px}
+.page-intro{color:#586662;line-height:1.7}
+.field input,.field select,.field textarea{background:#FFFFFF;border-color:var(--line2);color:#1E2A2A;border-radius:8px}
+.field input::placeholder,.field textarea::placeholder{color:#818C88}
+.med-chip{background:#F7F9F6;border-color:var(--line);color:#263632}
+.med-chip button{color:#53615D}
+
+.review-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 16px}
+.review-stat{background:#FFFFFF;border:1px solid #DDE5DE;border-radius:11px;padding:15px 16px;min-width:0}
+.review-stat-label{font-size:11px;color:#586662;letter-spacing:.2px}
+.review-stat-value{font:27px/1.2 var(--serif);color:#20352D;margin-top:5px;overflow-wrap:anywhere}
+.review-medications{grid-column:1/-1;background:#F6F8F5;border:1px solid #DDE5DE;border-radius:11px;padding:13px 16px;color:#31433D;font-size:13px;line-height:1.7;overflow-wrap:anywhere}
+.review-medications strong{display:block;font-size:11px;color:#5A6963;margin-bottom:4px}
+.finding-kicker{font:700 10px/1.4 var(--ui);letter-spacing:1px;text-transform:uppercase;color:#66746E;margin:12px 0 4px}
+.finding-evidence{padding:11px 12px;border-radius:8px;background:#F6F8F5;border:1px solid #E1E7E1;color:#42534C;font-size:12px;line-height:1.65;margin-top:12px;overflow-wrap:anywhere}
+.finding-evidence strong{color:#263A31}
+@media(max-width:700px){.review-summary{grid-template-columns:1fr}.review-medications{grid-column:auto}.interaction-top{flex-wrap:wrap}}
+
+.interaction-item{background:#FFFFFF;border-color:var(--line);border-radius:11px}
+.interaction-pair{color:#22312E}
+.interaction-item p{color:#4E5D59;line-height:1.7}
+.interaction-meta .tag{background:#F8FAF7}
+.empty{border-color:#CCD6CF;color:#586662;background:#FFFFFF}
+.empty strong{color:#253431}
+.table th,.table td{border-bottom-color:#E5E9E5}
+.table th{color:#65716D}
+.table td{color:#354440}
+.table tr:hover td{background:#FAFBF9}
+.report-paper{background:#FFFFFF;color:#202D29;border:1px solid #E0E5E0;box-shadow:0 4px 18px #1F352B08}
+.report-paper .muted{color:#65716D}
+.report-paper .report-line{border-color:#E1E6E1}
+.report-paper .interaction-item{border-color:#E0E5E0;background:#FFFFFF}
+.report-paper .interaction-pair{color:#263632}
+.report-paper .interaction-item p{color:#4E5D59}
+.report-paper .pill.high{color:#8F2529;background:#FCEBEC;border-color:#F0C7C8}
+.report-paper .pill.moderate{color:#815014;background:#FFF4E3;border-color:#F0D9B4}
+.report-paper .pill.low{color:#236443;background:#EAF6EE;border-color:#C9E5D1}
+.report-paper .pill.neutral{color:#52615D;background:#F2F4F1;border-color:#E0E5DF}
+.toast{background:#FFFFFF;border-color:#DCE3DD;color:#24332F;box-shadow:0 12px 35px #1C2E251A}
+#globalSearch{font-size:14px}
+button,input,select,textarea{font-size:inherit}
+@media(max-width:760px){
+ .sidebar{background:#FCFCFA;box-shadow:15px 0 40px #1D2C2418}
+ .hero:before{opacity:.65}
+ .hero h1{font-size:36px}
+ .content{padding-top:24px}
+}
+@media(prefers-contrast:more){
+ .card,.interaction-item,.search input,.field input,.field select,.field textarea{border-color:#8B9992}
+ .muted,.page-intro,.hero p,.interaction-item p{color:#3D4B47}
+}
+
+
+/* Clarity v0.5 — readability-first clinical typography */
+:root{
+  --sans:"Atkinson Hyperlegible","Inter",Arial,sans-serif;
+  --ui:"Inter","Atkinson Hyperlegible",Arial,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+}
+body{
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.65;
+  letter-spacing:0;
+  font-kerning:normal;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+button,input,select,textarea{font-family:var(--ui);font-size:14px;line-height:1.45}
+.brand-name{font-family:var(--serif);font-weight:500}
+.brand-sub{font-family:var(--ui);font-size:12px;line-height:1.5}
+.nav button{font-family:var(--ui);font-size:14px;font-weight:500;min-height:43px}
+.nav-label,.eyebrow{font-family:var(--ui);font-weight:700}
+.hero h1{
+  font-family:var(--ui);
+  font-weight:600;
+  font-size:clamp(34px,3.4vw,46px);
+  line-height:1.16;
+  letter-spacing:-1.35px;
+}
+.hero h1 em{font-style:normal;font-weight:600}
+.hero p{font-family:var(--sans);font-size:16px;line-height:1.7;max-width:560px}
+.card-title,.page-title,.highlight-title,.pair,.interaction-pair{
+  font-family:var(--ui);
+  letter-spacing:-.45px;
+}
+.card-title{font-size:18px;font-weight:600;line-height:1.35}
+.page-title{font-size:34px;font-weight:600;line-height:1.2}
+.highlight-title{font-size:19px;font-weight:600}
+.pair{font-size:21px;font-weight:600;line-height:1.35}
+.interaction-pair{font-size:19px;font-weight:650;line-height:1.4}
+.interaction-item p,.highlight-desc,.page-intro{
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.7;
+}
+.patient-name{font-family:var(--ui);font-size:14px;font-weight:600}
+.patient-date,.muted,.metric-label,.metric-foot,.context-stats span,.field label{
+  font-family:var(--ui);
+  font-size:12px;
+  line-height:1.55;
+}
+.metric-value,.context-stats strong,.donut-number{font-family:var(--ui);font-weight:600;letter-spacing:-.7px}
+.table th{font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:.6px}
+.table td{font-family:var(--sans);font-size:14px;line-height:1.55}
+.pill,.tag,.step,.notice,.eyebrow,.tiny{font-family:var(--ui);letter-spacing:0}
+.pill{font-size:11px;line-height:1.4}
+.tag{font-size:11px;line-height:1.5}
+.step{font-size:12px;line-height:1.45}
+.notice{font-size:12px;line-height:1.65}
+.field label{font-size:13px;font-weight:600;color:#3D4C47}
+.field input,.field select,.field textarea{font-size:15px;min-height:44px}
+.search input{font-size:14px;min-height:44px}
+.primary,.secondary{font-size:14px;font-weight:600;min-height:42px}
+.side-quote{font-family:var(--serif);font-size:22px;line-height:1.35}
+.hero-quote{font-family:var(--serif);font-size:23px;line-height:1.4}
+.report-paper h2{font-family:var(--ui);font-weight:650;letter-spacing:-.8px}
+.report-paper h3{font-family:var(--ui)!important;font-weight:600!important}
+.report-paper p,.report-paper .interaction-item p{font-family:var(--sans);font-size:14px;line-height:1.65}
+a,button{touch-action:manipulation}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid #1E6B54;
+  outline-offset:3px;
+}
+@media(max-width:760px){
+  body{font-size:15px}
+  .hero h1{font-size:34px;letter-spacing:-.9px}
+  .hero p{font-size:15px}
+  .page-title{font-size:30px}
+  .interaction-pair{font-size:18px}
+}
+
+
+/* v0.6 fix — visible search input text */
+.search input,
+#globalSearch,
+#patientFilter,
+#medicationFilter,
+input[type="search"],
+input[type="text"]{
+  color:#1E2A2A !important;
+  -webkit-text-fill-color:#1E2A2A !important;
+  caret-color:#1E6B54 !important;
+  background-color:#FFFFFF !important;
+}
+.search input::placeholder,
+#globalSearch::placeholder,
+#patientFilter::placeholder,
+#medicationFilter::placeholder,
+input[type="search"]::placeholder,
+input[type="text"]::placeholder{
+  color:#687571 !important;
+  -webkit-text-fill-color:#687571 !important;
+  opacity:1 !important;
+}
+.search input:-webkit-autofill,
+#globalSearch:-webkit-autofill,
+#patientFilter:-webkit-autofill,
+#medicationFilter:-webkit-autofill{
+  -webkit-text-fill-color:#1E2A2A !important;
+  box-shadow:0 0 0 1000px #FFFFFF inset !important;
+  caret-color:#1E6B54 !important;
+}
+
+
+/* v0.7 fix — native file picker field was still inheriting the dark input theme */
+input[type="file"],
+.field input[type="file"],
+#knowledgeBaseFile,
+input[name="knowledgeBaseFile"]{
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  min-height:48px;
+  padding:8px 12px !important;
+  background:#FFFFFF !important;
+  background-color:#FFFFFF !important;
+  color:#1E2A2A !important;
+  -webkit-text-fill-color:#1E2A2A !important;
+  caret-color:#1E6B54 !important;
+  border:1px solid #CCD4CE !important;
+  border-radius:9px !important;
+  color-scheme:light !important;
+  opacity:1 !important;
+}
+input[type="file"]::file-selector-button,
+.field input[type="file"]::file-selector-button,
+#knowledgeBaseFile::file-selector-button{
+  margin-right:10px;
+  padding:7px 12px;
+  background:#F0F3EF;
+  color:#1E2A2A;
+  border:1px solid #CCD4CE;
+  border-radius:6px;
+  font:600 13px/1.4 "Inter","Atkinson Hyperlegible",Arial,sans-serif;
+  cursor:pointer;
+}
+input[type="file"]::-webkit-file-upload-button{
+  margin-right:10px;
+  padding:7px 12px;
+  background:#F0F3EF;
+  color:#1E2A2A;
+  border:1px solid #CCD4CE;
+  border-radius:6px;
+  font:600 13px/1.4 "Inter","Atkinson Hyperlegible",Arial,sans-serif;
+  cursor:pointer;
+}
+input[type="file"]:focus-visible{
+  outline:3px solid #1E6B54 !important;
+  outline-offset:3px;
+}
+
+
+/* v0.8 — useful, accessible global search */
+.search-wrap{position:relative;flex:1;max-width:560px;min-width:180px}
+.search-wrap .search{max-width:none;width:100%}
+.search-results{
+ position:absolute;z-index:100;top:calc(100% + 8px);left:0;right:0;
+ max-height:min(440px,70vh);overflow:auto;background:#FFFFFF;
+ border:1px solid #D8E0DA;border-radius:12px;
+ box-shadow:0 18px 46px #1828201A;padding:7px;
+}
+.search-results.hidden{display:none}
+.search-result-group{padding:8px 10px 5px;color:#687571;font:700 10px/1.4 "Inter","Atkinson Hyperlegible",Arial,sans-serif;letter-spacing:1px;text-transform:uppercase}
+.search-result{
+ width:100%;display:flex;align-items:center;gap:11px;text-align:left;
+ padding:10px;border:0;border-radius:8px;background:#FFFFFF;color:#1E2A2A;
+ cursor:pointer;min-height:48px;font:500 14px/1.4 "Inter","Atkinson Hyperlegible",Arial,sans-serif;
+}
+.search-result:hover,.search-result:focus-visible,.search-result[aria-selected="true"]{background:#EDF3EF;outline:none}
+.search-result-icon{width:32px;height:32px;flex:0 0 32px;border-radius:8px;background:#F0F3EF;color:#285244;display:grid;place-items:center;font-size:15px}
+.search-result-copy{min-width:0;flex:1}
+.search-result-title{font-weight:600;overflow-wrap:anywhere}
+.search-result-sub{font-size:12px;color:#65716D;margin-top:3px;line-height:1.4}
+.search-result-hint{font-size:11px;color:#687571;white-space:nowrap}
+.search-empty{padding:16px 12px;color:#53615D;font-size:13px;line-height:1.6}
+.search-footer{padding:8px 10px 5px;border-top:1px solid #E7EBE7;margin-top:5px;color:#75807C;font-size:11px}
+@media(max-width:760px){
+ .search-wrap{max-width:none}
+ .search-results{position:fixed;top:108px;left:12px;right:12px;max-height:60vh}
+ .topbar{gap:8px}
+ .date{display:none}
+}
+
+
+/* v0.18 — explicit inline DOB errors and de-duplicated guidance */
+.med-validation-alert{margin:12px 0 16px;padding:16px;border:2px solid #B83D36;border-left-width:7px;border-radius:12px;background:#FFF0EE;color:#632C29;display:grid;gap:9px}
+.med-validation-alert h3{margin:0;font:700 17px/1.35 "Inter","Atkinson Hyperlegible",Arial,sans-serif;color:#842D28}
+.med-validation-alert p{margin:0;font:14px/1.55 "Atkinson Hyperlegible","Inter",Arial,sans-serif;color:#632C29}
+.med-validation-alert .validation-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:3px}
+.med-validation-alert .validation-actions button{min-height:42px}
+.med-validation-alert .validation-cancel{border:1px solid #B83D36;background:#fff;color:#842D28;border-radius:9px;padding:10px 14px;font-weight:700}
+.med-validation-alert .validation-draft{border:1px solid #8D3832;background:#8D3832;color:#fff;border-radius:9px;padding:10px 14px;font-weight:700}
+#patientDob{letter-spacing:.2px}
+.dob-error{display:block;margin-top:6px;color:#A52E28;font:600 13px/1.45 "Inter","Atkinson Hyperlegible",Arial,sans-serif}
+.dob-error.hidden{display:none}
+#patientDob[aria-invalid="true"]{border-color:#B83D36;box-shadow:0 0 0 2px rgba(184,61,54,.12)}
+
+/* v0.9 — calmer medication entry and explicit removal controls */
+.med-entry-row{display:flex;align-items:stretch;gap:10px}
+.med-entry-row #medInput{flex:1;min-width:0;min-height:48px;padding:12px 14px}
+.med-add-button{flex:0 0 auto;min-height:48px;padding:0 17px;border-radius:9px;box-shadow:none;white-space:nowrap}
+.med-add-button span{font-size:18px;line-height:1}
+.med-entry-hint{display:flex;align-items:center;gap:7px;color:#65716D;font:12px/1.5 "Inter","Atkinson Hyperlegible",Arial,sans-serif;margin:8px 0 18px}
+.med-entry-hint>span{display:inline-grid;place-items:center;width:21px;height:21px;border:1px solid #D7DED8;border-radius:5px;background:#F8FAF7;color:#43564D;font-weight:700}
+.med-list-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 9px}
+.med-list-heading strong{font:600 13px/1.4 "Inter","Atkinson Hyperlegible",Arial,sans-serif;color:#2B3934}
+.med-list-heading span{font:12px/1.4 "Inter","Atkinson Hyperlegible",Arial,sans-serif;color:#65716D;background:#F1F4F0;border:1px solid #E1E7E1;border-radius:999px;padding:4px 9px}
+.med-chips{display:grid;gap:8px;margin:0 0 13px}
+.med-chip{display:flex;align-items:center;gap:11px;min-width:0;padding:9px 10px 9px 12px;border:1px solid #E1E7E1;border-radius:10px;background:#FFFFFF;color:#253630}
+.med-chip-icon{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border-radius:8px;background:#EAF1EC;color:#285244;font:700 11px/1 "Inter","Atkinson Hyperlegible",Arial,sans-serif;letter-spacing:-.3px}
+.med-chip-name{flex:1;min-width:0;overflow-wrap:anywhere;font:600 14px/1.45 "Inter","Atkinson Hyperlegible",Arial,sans-serif}
+.med-remove{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:36px;flex:0 0 auto;padding:0 10px;border:1px solid #DCE3DD;border-radius:8px;background:#FFFFFF;color:#53615D;font:600 12px/1.3 "Inter","Atkinson Hyperlegible",Arial,sans-serif;cursor:pointer}
+.med-remove span{font-size:17px;line-height:1;color:#8C4B45}
+.med-remove:hover{background:#FFF3F1;border-color:#E9C7C3;color:#8C3530}
+.med-remove:focus-visible{outline:3px solid #1E6B54;outline-offset:2px}
+.med-list-empty{display:flex;align-items:center;gap:11px;padding:15px 13px;border:1px dashed #CCD7CE;border-radius:10px;background:#FAFBF9;color:#3F5148}
+.med-list-empty-icon{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:8px;background:#EAF1EC;color:#285244;font-size:19px}
+.med-list-empty strong,.med-list-empty small{display:block}
+.med-list-empty strong{font:600 13px/1.5 "Inter","Atkinson Hyperlegible",Arial,sans-serif}
+.med-list-empty small{font:12px/1.5 "Atkinson Hyperlegible","Inter",Arial,sans-serif;color:#65716D;margin-top:2px}
+@media(max-width:560px){
+ .med-entry-row{flex-direction:column}
+ .med-add-button{width:100%;justify-content:center}
+ .med-chip{gap:8px;padding-left:9px}
+ .med-remove{padding:0 8px}
+}
+
+
+.coverage-panel{margin-top:18px;padding:16px;border:1px solid #DDE5DE;border-radius:12px;background:#F7F9F6;color:#263632}.coverage-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.coverage-panel>p{margin:6px 0 12px}.coverage-list{display:grid;gap:0}.coverage-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:10px 0;border-top:1px solid #E0E6E0;font-size:12px}.coverage-row>span:first-child{font-weight:600}.coverage-status{text-align:right;color:#52615D}.report-paper .coverage-panel{background:#F7F9F6;color:#263632;break-inside:avoid}
+
+/* v0.19: calmer, data-led dashboard */
+.grid{grid-template-columns:minmax(260px,1.1fr) minmax(280px,1fr);align-items:start}
+.recent{grid-row:auto}
+.risk-card{min-height:245px}
+.card-head .pill{font-size:10px}
+.legend{gap:13px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.recent{grid-row:auto}}
+
+
+/* Clarity public landing page, shown before the preserved standalone workspace */
+#clarityLanding{min-height:100vh;background:#f7f6f2;color:#202923;font-family:"Atkinson Hyperlegible",Arial,sans-serif;display:flex;flex-direction:column}
+#clarityLanding *{box-sizing:border-box}
+#clarityLanding .landing-nav{height:78px;padding:0 clamp(22px,6vw,92px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dfe2dc;background:#fbfbf8}
+#clarityLanding .landing-brand{display:flex;align-items:center;gap:10px;font:600 25px Inter,Arial,sans-serif;letter-spacing:-1.4px}
+#clarityLanding .landing-brand{color:#202923;text-decoration:none!important;outline-offset:5px}
+#clarityLanding .landing-brand:visited,#clarityLanding .landing-brand:hover,#clarityLanding .landing-brand:active{color:#202923;text-decoration:none!important}
+#clarityLanding .landing-brand>span:last-child{color:#202923;text-decoration:none!important}
+#clarityLanding .landing-mark{width:34px;height:34px;display:inline-grid;place-items:center;flex:0 0 34px;background:transparent;border-radius:0;color:inherit;font-size:initial}
+#clarityLanding .clarity-symbol{display:block;width:34px;height:34px}
+#clarityLanding .landing-dot{color:#d88761}
+.sidebar .brand-lockup{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.sidebar .brand-symbol{width:29px;height:29px;flex:0 0 29px;display:block}
+.sidebar .brand-name{font:600 25px/1 Inter,Arial,sans-serif;letter-spacing:-1.2px;color:#202923}
+.sidebar .brand-name span{color:#d88761}
+
+#clarityLanding .landing-nav-link{font-size:14px;font-weight:700;color:#202923;border:0;background:none;cursor:pointer}
+#clarityLanding .landing-hero{flex:1;padding:clamp(65px,9vw,132px) clamp(22px,9vw,140px) 78px;display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:6vw;min-height:590px}
+#clarityLanding .landing-eyebrow{display:flex;align-items:center;gap:12px;font:700 10px Inter,Arial,sans-serif;letter-spacing:1.8px;color:#285f4c}
+#clarityLanding .landing-eyebrow:before{content:"";width:28px;height:1px;background:#d88761}
+#clarityLanding h1{font:500 clamp(43px,5.6vw,78px)/1.05 "Playfair Display",Georgia,serif;letter-spacing:-2px;margin:25px 0}
+#clarityLanding h1 em{color:#285f4c;font-weight:500}
+#clarityLanding .landing-copy{max-width:490px;color:#596760;font-size:18px;line-height:1.75}
+#clarityLanding .landing-actions{display:flex;align-items:center;gap:25px;margin-top:31px;flex-wrap:wrap}
+#clarityLanding .landing-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#285f4c;color:white;border:1px solid #285f4c;padding:14px 18px;border-radius:4px;font-weight:700;font-size:14px;cursor:pointer;transition:transform .2s,background .2s}
+#clarityLanding .landing-primary:hover{background:#1d4c3b;transform:translateY(-1px)}
+#clarityLanding .landing-secondary{font-weight:700;font-size:14px;border:0;border-bottom:1px solid #a8b5aa;padding:9px 0;background:transparent;color:#202923;cursor:pointer}
+#clarityLanding .landing-note{display:flex;gap:9px;align-items:center;color:#64716b;font-size:12px;margin-top:38px}
+#clarityLanding .landing-art{height:420px;position:relative;display:grid;place-items:center;isolation:isolate}
+#clarityLanding .landing-art:before{content:"";position:absolute;width:75%;height:75%;background:#e7eee4;border-radius:48% 52% 63% 37%/48% 38% 62% 52%;z-index:-2;animation:landingMorph 12s ease-in-out infinite alternate}
+#clarityLanding .landing-orbit{position:absolute;border:1px solid #9db4a1;border-radius:50%;width:300px;height:300px;animation:landingOrbit 32s linear infinite}
+#clarityLanding .landing-orbit-two{width:365px;height:245px;transform:rotate(-38deg);border-color:#d6a184;animation-duration:40s;animation-direction:reverse}
+#clarityLanding .landing-orbit-three{width:240px;height:370px;transform:rotate(42deg);border-color:#c0cbbd;animation-duration:48s}
+#clarityLanding .landing-art-center{width:116px;height:116px;display:grid;place-items:center;background:#285f4c;color:#fff;border-radius:50%;box-shadow:0 20px 50px #285f4c2b;font-size:38px}
+#clarityLanding .landing-label{position:absolute;background:#fffefa;border:1px solid #dfe3da;border-radius:30px;padding:8px 12px;font:700 9px Inter,Arial,sans-serif;letter-spacing:1.2px}
+#clarityLanding .landing-label-a{top:13%;left:18%}
+#clarityLanding .landing-label-b{right:4%;top:42%}
+#clarityLanding .landing-label-c{bottom:13%;left:35%}
+#clarityLanding .landing-caption{position:absolute;right:0;bottom:0;color:#64716b;font-size:12px;line-height:1.6;text-align:right}
+#clarityLanding .landing-approach{border-top:1px solid #dfe2dc;padding:70px clamp(22px,9vw,140px);display:grid;grid-template-columns:.8fr 1.2fr;gap:7vw;background:#f7f6f2}
+#clarityLanding .landing-approach h2{font:500 clamp(39px,4.4vw,58px)/1.08 "Playfair Display",Georgia,serif;letter-spacing:-1.5px;margin:18px 0}
+#clarityLanding .landing-approach h2 em{color:#285f4c}
+#clarityLanding .landing-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+#clarityLanding .landing-features article{border-top:1px solid #b9c6b9;padding-top:17px}
+#clarityLanding .landing-features article>span{font:700 10px Inter,Arial,sans-serif;color:#9a5a12}
+#clarityLanding .landing-features h3{font:600 16px Inter,Arial,sans-serif;line-height:1.4;margin:17px 0 8px}
+#clarityLanding .landing-features p{font-size:14px;line-height:1.7;color:#596760;margin:0}
+#clarityLanding .landing-footer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px clamp(22px,6vw,92px);border-top:1px solid #dfe2dc;color:#64716b;font-size:11px;background:#fbfbf8}
+#clarityLanding .landing-footer strong{font:600 19px Inter,Arial,sans-serif;color:#202923}
+#clarityLanding[hidden],#clarityDashboard[hidden]{display:none!important}
+@keyframes landingOrbit{to{transform:rotate(360deg)}}
+@keyframes landingMorph{0%{border-radius:48% 52% 63% 37%/48% 38% 62% 52%;transform:rotate(0)}100%{border-radius:38% 62% 40% 60%/60% 42% 58% 40%;transform:rotate(8deg)}}
+@media(max-width:900px){#clarityLanding .landing-hero{grid-template-columns:1fr;gap:30px}#clarityLanding .landing-art{height:340px}#clarityLanding .landing-approach{grid-template-columns:1fr;gap:25px}}
+@media(max-width:560px){#clarityLanding .landing-nav{height:66px}#clarityLanding .landing-hero{padding-top:58px;padding-bottom:55px;min-height:0}#clarityLanding h1{font-size:48px}#clarityLanding .landing-copy{font-size:16px}#clarityLanding .landing-art{height:300px;transform:scale(.92);margin:0 -10px}#clarityLanding .landing-approach{padding-top:50px;padding-bottom:50px}#clarityLanding .landing-features{grid-template-columns:1fr;gap:23px}#clarityLanding .landing-footer{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){#clarityLanding *,#clarityLanding *:before,#clarityLanding *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+
+
+/* Clarity logo: Option 5, rounded four-part mark + rust period */
+#clarityLanding .landing-brand,#clarityLanding .landing-brand:link,#clarityLanding .landing-brand:visited,#clarityLanding .landing-brand:hover,#clarityLanding .landing-brand:active{color:#202923;text-decoration:none!important}
+#clarityLanding .landing-brand .landing-dot{text-decoration:none!important}
+.sidebar .brand-lockup{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.sidebar .brand-symbol{width:29px;height:29px;flex:0 0 29px;display:block}
+.sidebar .brand-name{font-family:Inter,Arial,sans-serif;font-size:25px;line-height:1;font-weight:600;letter-spacing:-1.2px;color:#202923}
+.sidebar .brand-name span{color:#d88761}
+
+/* Exact Clarity logo mark — four rounded arms with a curved white channel */
+.clarity-symbol { display:inline-block; width:44px; height:44px; flex:0 0 44px; color:#285f4c; vertical-align:middle; }
+.brand, .brand:link, .brand:visited, .brand:hover, .brand:active,
+.logo, .logo:link, .logo:visited, .logo:hover, .logo:active {
+  color: #202b28; text-decoration: none; display:inline-flex; align-items:center; gap:10px;
+}
+.brand:hover, .logo:hover { opacity:.92; }
+.brand-dot, .wordmark-dot, .logo-dot { color:#c96d45; }
+
+
+/* Clarity wordmark and exact Option 5 symbol */
+.landing-brand, .landing-brand:link, .landing-brand:visited, .landing-brand:hover, .landing-brand:active {
+  color: var(--text, #202b28) !important;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.landing-brand .landing-dot { color: var(--clarity-rust, #c96d45) !important; }
+.landing-mark { display:inline-flex; align-items:center; justify-content:center; color:#285f4c; flex:0 0 auto; }
+.clarity-symbol { display:block; width:44px; height:44px; color:#285f4c; }
+
+</style>
+<style id="clarity-release-theme">
+:root{color-scheme:light;--bg:#f7f6f2;--panel:#ffffff;--panel2:#f0efe9;--line:#dfe2dc;--line2:#c8cec7;--text:#202923;--muted:#59675f;--dim:#758078;--amber:#9a5a12;--coral:#b7473f;--red:#a92f2b;--green:#267448;--serif:"Playfair Display",Georgia,serif;--sans:"Atkinson Hyperlegible",Arial,sans-serif}
+body{background:var(--bg);color:var(--text)}.sidebar{background:#eef1eb;border-right-color:#d7ddd4}.brand-sub,.side-note{color:#5c6a61}.nav-label{color:#68776d}.nav button{color:#46564c}.nav button:hover{background:#dfe7dd;color:#202923}.nav button.active{background:#dce8db;border-color:#c6d7c3;color:#173d2a}.nav button.active svg{color:#267448}.side-quote{color:#30483a}.privacy{color:#267448}.topbar{background:#fbfbf8;border-bottom-color:#dfe2dc}.search input{background:#fff;color:#202923;border-color:#c8cec7}.icon-btn,.secondary{background:#fff;color:#26342b;border-color:#c8cec7}.avatar{background:#d8e5d5;color:#1e432c}.hero:before{opacity:.55}.hero p{color:#526057}.eyebrow{color:#8c5112}.hero h1 em{color:#8c5112}.primary{background:#23633e;color:#fff;box-shadow:none}.primary:hover{filter:brightness(1.08)}.hero-quote{color:#435b49}.step-num{background:#fff;color:#26342b;border-color:#c8cec7}.step-line{background:#d1d8d0}.card,.card:where(.glow){background:#fff;border-color:#dfe2dc;box-shadow:0 3px 14px #22332208}.card-title,.highlight-title,.pair{color:#24332a}.muted{color:#59675f}.text-link{color:#23633e}.patient-row{border-top-color:#e1e5df}.patient-row:hover .patient-name{color:#23633e}.initials{background:#e5ece2;color:#2b4a35;border-color:#d2ddd0}.pill.high{color:#922d29;background:#fff0ee;border-color:#e5aaa5}.pill.moderate{color:#804a08;background:#fff5e6;border-color:#e9ca97}.pill.low{color:#21633b;background:#edf7ee;border-color:#b8d8be}.pill.neutral{color:#526057;background:#f3f5f1;border-color:#d8ded6}.donut:before{background:#fff}.legend-row{color:#4b5a50}.legend-row strong{color:#202923}.full-link{color:#34483a;background:#f7f9f5;border-color:#d6ded4}.highlight{background:linear-gradient(120deg,#f9eee8,#f5f3ed);border-color:#e4c9be}.highlight-desc{color:#4f5d54}.tag{color:#536258;border-color:#d4dcd3}.arrow-btn{background:#fff;color:#24332a;border-color:#c8cec7}.metric-foot{color:#526057}.content{color:var(--text)}.page-intro,.form-help,.field-help{color:#59675f}.input, input,select,textarea{color:#202923}.search input::placeholder,input::placeholder,textarea::placeholder{color:#7a867d}.table{color:#26342b}.table th{color:#526057;background:#f1f4ee}.table td,.table th{border-color:#dfe4dc}.notice{background:#f1f5ed!important;color:#2a4733!important;border-color:#cbdcc7!important}.notice p,.notice .muted{color:#435b49!important}.interaction-item{background:#fff!important;border-color:#dce2da!important;color:#202923!important}.interaction-item p,.finding-evidence{color:#4d5b52!important}.interaction-meta .tag{color:#4d5b52}.report-paper{background:#fff!important;color:#202923!important;border-color:#dfe2dc!important;box-shadow:0 5px 24px #2233220b}.report-paper .muted,.report-paper p{color:#536057!important}.report-paper .pill.high{color:#922d29}.report-paper .pill.moderate{color:#804a08}.report-paper .pill.low{color:#21633b}.empty{background:#fff!important;color:#526057!important;border-color:#d6ded4!important}.empty strong{color:#24332a}.toast{background:#20392a!important;color:#fff!important;box-shadow:0 8px 28px #16281c33}.validation-cancel{background:#fff!important;color:#7d2d28!important;border-color:#c87a73!important}.validation-draft{background:#23633e!important;color:#fff!important}.unknown-alert,#unknownMedicationAlert{background:#fff0ed!important;color:#702b25!important;border:2px solid #c64e43!important;border-radius:14px!important;padding:18px!important;box-shadow:0 4px 18px #8c302015!important}.unknown-alert h3,#unknownMedicationAlert h3{font-size:18px!important;color:#8b2e27!important}.unknown-alert p,#unknownMedicationAlert p{font-size:14px!important;color:#612e29!important}.unknown-alert button,#unknownMedicationAlert button{min-height:42px}.field input,.field select,.field textarea,.form-field input,.form-field select,.form-field textarea{background:#fff!important;color:#202923!important;border-color:#bdc9bd!important}.form-section,.panel{background:#fff;border-color:#dfe2dc}.risk-card{background:#fff}.risk-card .donut-label{color:#59675f}.risk-card .legend-row{color:#526057}.sidebar .brand-name{color:#20372a}.sidebar .brand-name span{color:#b7473f}.side-note{border-color:#d5ddd3}.privacy .dot{background:#267448}.validation-cancel:hover{background:#fde1dd!important}.secondary:hover{background:#f0f5ee}.nav button:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #9a5a12;outline-offset:3px}
+@media(max-width:900px){.app{grid-template-columns:190px minmax(0,1fr)}.content{padding:24px 22px}.topbar{padding:0 22px}}
+@media(max-width:680px){.app{display:block}.sidebar{position:relative;top:auto;height:auto;padding:14px;display:block}.brand{padding:0 8px 12px}.sidebar-bottom{display:none}.nav-label{display:none}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap}.topbar{height:auto;min-height:64px;padding:12px 16px}.content{padding:20px 14px}.hero-quote{display:none}.hero{min-height:auto}.grid{grid-template-columns:1fr}.highlight{grid-column:auto}.recent{grid-row:auto}.risk-content{justify-content:flex-start}.search{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style id="clarity-auth-styles">
+#clarityAuth[hidden],#claritySessionBar[hidden]{display:none!important}
+#clarityAuth{min-height:calc(100vh - 1px);background:#edf0e8;color:#202923;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,440px);gap:clamp(32px,8vw,120px);align-items:center;padding:clamp(38px,7vw,90px) clamp(22px,9vw,140px);font-family:"Atkinson Hyperlegible",Arial,sans-serif}
+#clarityAuth .auth-intro .kicker{font:700 10px Inter,Arial,sans-serif;letter-spacing:1.8px;color:#285f4c}
+#clarityAuth .auth-intro h1{font:500 clamp(42px,5vw,64px)/1.07 "Playfair Display",Georgia,serif;letter-spacing:-1.7px;margin:18px 0;color:#202923}
+#clarityAuth .auth-intro h1 em{color:#285f4c}
+#clarityAuth .auth-intro p{font-size:16px;line-height:1.75;color:#596760;max-width:410px}
+#clarityAuth .auth-privacy{display:flex;gap:10px;margin-top:28px;color:#52645a;font-size:12px;line-height:1.6;max-width:380px}
+#clarityAuth .auth-card{background:#fffefa;border:1px solid #dfe3da;padding:clamp(22px,3vw,30px);box-shadow:0 16px 50px #2c48370a}
+#clarityAuth .auth-tabs{display:flex;gap:24px;border-bottom:1px solid #dfe3da;margin-bottom:26px}
+#clarityAuth .auth-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;padding:0 0 13px;color:#64716b;font-weight:700;cursor:pointer}
+#clarityAuth .auth-tabs button.active{color:#285f4c;border-color:#285f4c}
+#clarityAuth h2{font:500 29px "Playfair Display",Georgia,serif;margin:0 0 7px;letter-spacing:-.4px}
+#clarityAuth .auth-sub{font-size:13px;color:#64716b;margin:0 0 22px}
+#clarityAuth label{display:block;font-size:12px;font-weight:700;margin:16px 0;color:#34453b}
+#clarityAuth input{display:block;width:100%;margin-top:8px;padding:13px 12px;border:1px solid #cfd7ce;background:#fffefa;border-radius:3px;outline:none;color:#202923;font:14px Inter,Arial,sans-serif;min-height:45px}
+#clarityAuth input:focus{border-color:#285f4c;box-shadow:0 0 0 3px #285f4c18}
+#clarityAuth .auth-submit{width:100%;margin-top:12px;border:1px solid #285f4c;border-radius:4px;padding:14px 18px;background:#285f4c;color:#fff;font-weight:700;cursor:pointer;min-height:46px}
+#clarityAuth .auth-submit:disabled{opacity:.65;cursor:wait}
+#clarityAuth .auth-back{display:block;margin:17px auto 0;background:none;border:0;border-bottom:1px solid #a8b5aa;padding:7px 0;color:#34453b;font-weight:700;cursor:pointer}
+#clarityAuth .auth-message{display:none;margin-top:14px;padding:11px 12px;background:#f1f4ec;border-left:3px solid #285f4c;color:#34453b;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+#clarityAuth .auth-message.visible{display:block}
+#clarityAuth .auth-config-note{font-size:11px;color:#78532b;background:#fff5e8;padding:10px 12px;margin-top:14px;line-height:1.5}
+#claritySessionBar{position:fixed;z-index:1000;top:62px;right:18px;display:flex;align-items:center;justify-content:flex-start;gap:14px;padding:12px 14px;background:#fffefa;border:1px solid #dfe2dc;border-radius:12px;box-shadow:0 12px 36px #2029231a;color:#59675f;font:12px Inter,Arial,sans-serif}
+#claritySessionBar button{border:1px solid #c8cec7;border-radius:999px;background:#fff;color:#202923;padding:9px 14px;font-weight:700;cursor:pointer}
+@media(max-width:800px){#clarityAuth{grid-template-columns:1fr;gap:28px;padding-top:45px;padding-bottom:50px}#clarityAuth .auth-intro h1{font-size:45px}}
+</style>
+
+</head>
+<body>
+<section id="clarityLanding" hidden aria-label="Clarity landing page">
+  <header class="landing-nav">
+    <a class="landing-brand" href="#" aria-label="Clarity home"><span class="landing-mark"><svg class="clarity-symbol" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+  <path d="M22 3.5a7 7 0 0 1 7 7v5.2a8 8 0 0 1-3.1 6.3l-3.9 3-3.9-3a8 8 0 0 1-3.1-6.3v-5.2a7 7 0 0 1 7-7Z" fill="currentColor"/>
+  <path d="M3.5 22a7 7 0 0 1 7-7h5.2a8 8 0 0 1 6.3 3.1l3 3.9-3 3.9a8 8 0 0 1-6.3 3.1h-5.2a7 7 0 0 1-7-7Z" fill="currentColor"/>
+  <path d="M22 40.5a7 7 0 0 1-7-7v-5.2a8 8 0 0 1 3.1-6.3l3.9-3 3.9 3a8 8 0 0 1 3.1 6.3v5.2a7 7 0 0 1-7 7Z" fill="currentColor"/>
+  <path d="M21.9 17.8c-1.1 2.4-2.9 4.3-5.1 5.8 2.3 1.5 4.1 3.4 5.2 5.8 1.1-2.4 2.9-4.3 5.1-5.8-2.3-1.5-4.1-3.4-5.2-5.8Z" fill="var(--clarity-cutout, #f8f7f2)"/>
+  <circle cx="38" cy="22" r="4.1" fill="var(--clarity-rust, #c96d45)"/>
+</svg></span><span>clarity<span class="landing-dot">.</span></span></a>
+    <button class="landing-nav-link" type="button" data-enter-dashboard>Clinician access ↗</button>
+  </header>
+  <main class="landing-hero">
+    <div>
+      <div class="landing-eyebrow">MEDICATION SAFETY, THOUGHTFULLY</div>
+      <h1>Make room for<br><em>better decisions.</em></h1>
+      <p class="landing-copy">A clearer way to review potential drug interactions, understand the evidence, and keep medication decisions in view.</p>
+      <div class="landing-actions">
+        <button class="landing-primary" type="button" data-enter-dashboard>Enter Clarity <span aria-hidden="true">↗</span></button>
+        <button class="landing-secondary" type="button" data-scroll-approach>Explore the approach</button>
+      </div>
+      <div class="landing-note"><span aria-hidden="true">♧</span> Evidence-aware. Transparent about uncertainty.</div>
+    </div>
+    <div class="landing-art" aria-label="Abstract illustration of evidence, context, and clarity">
+      <div class="landing-orbit"></div><div class="landing-orbit landing-orbit-two"></div><div class="landing-orbit landing-orbit-three"></div>
+      <div class="landing-art-center">⌁</div>
+      <span class="landing-label landing-label-a">EVIDENCE</span><span class="landing-label landing-label-b">CONTEXT</span><span class="landing-label landing-label-c">CLARITY</span>
+      <span class="landing-caption">A more considered view<br>of medication risk.</span>
+    </div>
+  </main>
+  <section class="landing-approach" id="landingApproach">
+    <div><span class="landing-eyebrow">THE APPROACH</span><h2>Less noise.<br><em>More context.</em></h2></div>
+    <div class="landing-features">
+      <article><span>01</span><h3>See the whole picture</h3><p>Review medication pairs together, with coverage and missing information made visible.</p></article>
+      <article><span>02</span><h3>Understand the evidence</h3><p>Keep source information and uncertainty visible instead of treating missing data as reassurance.</p></article>
+      <article><span>03</span><h3>Designed for careful review</h3><p>A calm workspace for structured review—not a replacement for clinical judgement.</p></article>
+    </div>
+  </section>
+  <footer class="landing-footer"><strong>clarity<span class="landing-dot">.</span></strong><span>Medication safety, thoughtfully.</span><span>Prototype · Not for clinical decision-making</span></footer>
+</section>
+<section id="clarityAuth" aria-label="Clinician sign in">
+  <div class="auth-intro"><div class="kicker">CLINICIAN WORKSPACE</div><h1>Your work,<br><em>where you need it.</em></h1><p>Sign in to continue to your Clarity dashboard and review medication information in one considered workspace.</p><div class="auth-privacy"><span aria-hidden="true">♧</span><span>Account access is handled through Supabase Auth when configured. This prototype is not for real patient data or clinical decision-making.</span></div></div>
+  <form class="auth-card" id="clarityAuthForm"><div class="auth-tabs"><button type="button" class="active" id="clarityLoginTab">Sign in</button><button type="button" id="claritySignupTab">Create account</button></div><h2 id="clarityAuthTitle">Welcome back.</h2><p class="auth-sub" id="clarityAuthSub">Sign in to your workspace.</p><div id="clarityNameField" hidden><label for="clarityFullName">Full name<input id="clarityFullName" name="name" autocomplete="name" placeholder="Your name" /></label></div><label for="clarityEmail">Email address<input id="clarityEmail" name="email" type="email" autocomplete="email" required placeholder="you@workplace.org" /></label><label for="clarityPassword">Password<input id="clarityPassword" name="password" type="password" autocomplete="current-password" required minlength="8" placeholder="At least 8 characters" /></label><button class="auth-submit" id="clarityAuthSubmit" type="submit">Sign in ↗</button><button class="auth-back" id="clarityBackLanding" type="button">Back to Clarity home</button><div class="auth-message" id="clarityAuthMessage" role="status" aria-live="polite"></div><div class="auth-config-note" id="clarityAuthConfigNote">Backend setup required: add your Supabase project URL and publishable key in <code>supabase-config.js</code> before signing in or creating accounts.</div></form>
+</section>
+
+<div id="clarityDashboard" hidden><div id="claritySessionBar" hidden><span id="claritySignedInAs"></span><button type="button" id="claritySignOut">Sign out</button></div>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-name">Clarity <span>•</span></div><div class="brand-sub">Medication Safety, Thoughtfully.</div></div>
+  <div class="nav-label">WORKSPACE</div>
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-page="overview"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/><path d="M9 5v3"/></svg>Overview</button>
+    <button data-page="patients"><svg viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M2 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/><path d="M19 8a4 4 0 0 1 0 7"/></svg>Patients</button>
+    <button data-page="medications"><svg viewBox="0 0 24 24"><path d="M10 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-4"/><path d="M14 3h7v7"/><path d="m21 3-9 9"/><path d="M7 16h5"/></svg>Medications</button>
+    <button data-page="interactions"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9"/><path d="M8 3v4h4"/><path d="M8 12h8M8 16h5"/><circle cx="18" cy="5" r="3"/></svg>Interactions</button>
+    <button data-page="reports"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>Reports</button>
+    <button data-page="data-sources"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/></svg>Data sources</button>
+    <button data-page="audit"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/><path d="M3 4v5h5"/></svg>Audit log</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="side-quote">Less noise.<br>More <span>clarity.</span></div><div class="side-note">Context aware<br>Human centred<br>Safer care</div><div class="privacy"><span class="dot"></span> Demo workspace · local only</div></div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+  <div class="search-wrap"><div class="search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16 16 5 5"/></svg><input id="globalSearch" placeholder="Search patients, medications, or pages…" aria-label="Search workspace" aria-autocomplete="list" aria-controls="globalSearchResults" aria-expanded="false" autocomplete="off"></div><div id="globalSearchResults" class="search-results hidden" role="listbox" aria-label="Search results"></div></div>
+  <div class="top-actions"><div class="date" id="todayDate">DEMO WORKSPACE</div><button class="icon-btn" id="topNew" aria-label="New analysis">＋</button><button type="button" class="avatar" id="clarityAccountToggle" title="Account menu" aria-label="Open account menu" aria-expanded="false" style="border:0;cursor:pointer;font:inherit">CR</button></div>
+</header>
+<div class="content" id="content">
+<section class="page" id="page-overview">
+  <div class="hero"><div class="hero-copy"><div class="eyebrow">Clinical intelligence / 01</div><h1>Good care starts<br>with <em>clarity.</em></h1><p>Make drug interaction reviews more focused. Bring medication data, patient context and evidence into one considered workspace.</p><button class="primary" data-go="new-analysis">＋ <span>New patient analysis</span> <span aria-hidden="true">↗</span></button></div><div class="hero-quote">Context turns<br>data into care.</div></div>
+  <div class="steps"><div class="step"><span class="step-num">1</span><span>Add patient<br>and medications</span></div><div class="step-line"></div><div class="step"><span class="step-num">2</span><span>Analyze<br>interactions</span></div><div class="step-line"></div><div class="step"><span class="step-num">3</span><span>Review<br>prioritized risks</span></div><div class="step-line"></div><div class="step"><span class="step-num">4</span><span>Generate<br>clinical report</span></div></div>
+  <div class="grid">
+    <section class="card recent"><div class="card-head"><div class="card-title">Recent analyses</div><button class="text-link" data-page="patients">View all ↗</button></div><div id="recentList"></div></section>
+    <section class="card glow risk-card"><div class="card-head"><div class="card-title">Risk overview</div><span class="pill neutral" id="riskDataStatus">Awaiting analysis</span></div><div class="risk-content"><div class="donut"><div class="donut-inner"><div class="donut-number" id="riskTotal">4</div><div class="donut-label">potential findings</div></div></div><div class="legend"><div class="legend-row"><span class="legend-dot" style="background:var(--red)"></span><strong id="highCount">2</strong> High priority</div><div class="legend-row"><span class="legend-dot" style="background:var(--amber)"></span><strong id="modCount">1</strong> Moderate</div><div class="legend-row"><span class="legend-dot" style="background:var(--green)"></span><strong id="lowCount">1</strong> Lower priority</div><div class="legend-row"><span class="legend-dot" style="background:var(--muted)"></span><strong id="unknownCount">0</strong> Unclassified</div></div></div></section>
+
+    <section class="card metric"><div class="card-head"><div class="card-title">Clinician experience</div><span class="pill neutral">Target</span></div><div class="metric-value">+40%</div><div class="metric-label">Target improvement in satisfaction with reports</div><div class="metric-foot"><span>•</span> Clearer context · actionable insights</div></section>
+    <section class="card metric"><div class="card-head"><div class="card-title">Alert overrides</div><span class="pill neutral">Target</span></div><div class="metric-value">−30%</div><div class="metric-label">Target reduction in critical alert overrides</div><div class="metric-foot"><span>•</span> Prioritization · patient context</div></section>
+    <section class="card metric"><div class="card-head"><div class="card-title">Summary accuracy</div><span class="pill neutral">Target</span></div><div class="metric-value">90%</div><div class="metric-label">Target accuracy for generated risk summaries</div><div class="metric-foot"><span>•</span> Verified sources · traceable logic</div></section>
+  </div>
+  <div class="notice"><span>ⓘ</span><div><strong>Prototype notice.</strong> This prototype starts with illustrative sample rules. You can import a third-party DDInter-derived knowledge base from Data sources; coverage and clinical validity remain limited, and the app is not a validated decision-support system. No patient data is sent to a server.</div></div>
+</section>
+<section class="page hidden" id="page-new-analysis">
+  <div class="eyebrow">Clinical workspace / New review</div><h1 class="page-title">Start an analysis.</h1><p class="page-intro">Use synthetic or de-identified information only. Add medications to run the illustrative local rules and review the results.</p>
+  <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr)">
+    <section class="card"><div class="card-head"><div class="card-title">Patient details</div><span class="pill neutral">Optional context</span></div><form id="analysisForm"><div class="form-grid"><div class="field"><label for="patientName">Patient label</label><input id="patientName" placeholder="e.g. Sample patient 01" value="Sample patient 01" required></div><div class="field"><label for="patientDob">Date of birth (optional)</label><input id="patientDob" type="text" inputmode="numeric" autocomplete="bday" placeholder="DD/MM/YYYY" aria-describedby="patientAgePreview dobError"><small class="muted tiny" id="patientAgePreview">Age will be calculated for the analysis date.</small><small class="dob-error hidden" id="dobError" role="alert" aria-live="polite"></small></div><div class="field"><label for="patientConditions">Relevant conditions</label><input id="patientConditions" placeholder="e.g. hypertension (optional)"></div><div class="field"><label for="patientAllergies">Allergies / notes</label><input id="patientAllergies" placeholder="Only if known"></div><div class="field wide"><label for="medInput">Medication name</label><div class="med-entry-row"><input id="medInput" list="medSuggestions" placeholder="Search a medication name…" aria-describedby="medEntryHint" autocomplete="off"><button class="primary med-add-button" type="button" id="addMed"><span aria-hidden="true">＋</span> Add medication</button></div><div class="med-entry-hint" id="medEntryHint"><span>↵</span> Press Enter to add · Choose a suggested name when available</div><datalist id="medSuggestions"><option value="Warfarin"><option value="Amiodarone"><option value="Aspirin"><option value="Ibuprofen"><option value="Sertraline"><option value="Tramadol"><option value="Simvastatin"><option value="Clarithromycin"><option value="Metformin"><option value="Lisinopril"><option value="Atorvastatin"><option value="Apixaban"></datalist><div class="med-list-heading"><strong>Medication list</strong><span id="medCount">0 added</span></div><div class="med-chips" id="medChips" aria-live="polite" aria-label="Added medications"></div><section id="unknownMedicationAlert" class="med-validation-alert hidden" role="alert" aria-live="assertive"></section><div class="muted tiny">Confirm each medication name. This prototype is not a complete clinical interaction checker.</div></div></div><div class="form-actions"><button class="secondary" type="button" id="loadSample">Load sample</button><button class="primary" type="submit">Save draft / analyze ↗</button></div></form></section>
+    <section class="card glow"><div class="card-title">Before you begin</div><div style="margin:18px 0;display:grid;gap:17px"><div><div class="eyebrow">01 / Context</div><strong>Include what is known</strong><div class="muted tiny">Patient factors can affect clinical interpretation. This prototype does not calculate patient-specific risk.</div></div><div><div class="eyebrow">02 / Evidence</div><strong>Check every finding</strong><div class="muted tiny">Demo matches are illustrative and require confirmation in an authoritative clinical resource.</div></div><div><div class="eyebrow">03 / Review</div><strong>Keep a clinician in control</strong><div class="muted tiny">This tool does not prescribe, recommend stopping a medication, or replace professional judgment.</div></div></div></section>
+  </div>
+</section>
+<section class="page hidden" id="page-patients">
+  <div class="eyebrow">Workspace / Patient records</div><h1 class="page-title">Patient workspace.</h1><p class="page-intro">Demo profiles created in this browser. Use fictional labels only.</p>
+  <div class="notice"><span>ⓘ</span><div><strong>Local prototype storage.</strong> Records stay in this browser and may be lost if site data is cleared. Use fictional or de-identified data only.</div></div><div class="page-toolbar"><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="patientFilter" placeholder="Filter patient labels…" style="max-width:360px;width:100%;background:#19181b;border:1px solid var(--line2);padding:11px 13px;border-radius:10px;color:var(--text)"><button class="secondary" id="showArchived">Show archived</button></div><button class="primary" data-go="new-analysis">＋ New analysis</button></div>
+  <section class="card"><div id="patientTable"></div></section>
+</section>
+<section class="page hidden" id="page-medications">
+  <div class="eyebrow">Workspace / Medication index</div><h1 class="page-title">Medication index.</h1><p class="page-intro">A small list of medication names used in this demonstration. This is not a formulary or authoritative drug catalog.</p>
+  <section class="card"><div class="card-head"><div class="card-title">Available demo terms</div><span class="pill neutral" id="medCountPill">12 terms</span></div><div class="page-toolbar"><input id="medicationFilter" placeholder="Search demo medication names…" style="max-width:380px;width:100%;background:#111113;border:1px solid var(--line2);padding:11px 13px;border-radius:10px;color:var(--text)"></div><div id="medicationGrid" class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr))"></div></section>
+</section>
+<section class="page hidden" id="page-interactions">
+  <div class="eyebrow">Workspace / Analysis results</div><h1 class="page-title">Interaction review.</h1><p class="page-intro">Review matched examples, their potential concerns and the limitations of this prototype's rule set.</p>
+  <div class="page-toolbar"><div class="muted tiny" id="interactionSubtitle">No review run yet</div><button class="primary" data-go="new-analysis">＋ Run new analysis</button></div>
+  <div id="reviewSummary" class="review-summary hidden" aria-live="polite"></div>
+  <div class="notice" id="interactionNotice" style="margin:0 0 16px"><span>ⓘ</span><div><strong id="interactionNoticeTitle">Not clinically validated.</strong> <span id="interactionNoticeText">Severity labels are illustrative demo classifications. Confirm drug pairs, severity and management using a validated clinical reference before relying on any result.</span></div></div>
+  <div id="interactionResults" class="interaction-list"></div>
+</section>
+<section class="page hidden" id="page-reports">
+  <div class="eyebrow">Workspace / Documentation</div><h1 class="page-title">Review report.</h1><p class="page-intro">Generate a printable summary of the latest local demo analysis. It is labelled as a prototype report.</p>
+  <div class="page-toolbar"><div class="muted tiny" id="reportMeta">No analysis generated yet</div><button class="primary" id="printReport">Print / Save as PDF ↗</button></div>
+  <div id="reportContent"><div class="empty"><strong>Your report will appear here.</strong>Run an analysis with at least one medication pair to generate a review summary.</div></div>
+</section>
+<section class="page hidden" id="page-data-sources">
+  <div class="eyebrow">Workspace / Evidence layer</div><h1 class="page-title">Data, with provenance.</h1><p class="page-intro">Load a DDInter-compatible knowledge-base JSON file to switch the checker from illustrative sample rules to source-attributed drug-pair records. The file stays in this browser session; it is not uploaded.</p>
+  <div class="grid" style="grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr)">
+    <section class="card glow"><div class="card-head"><div class="card-title">Interaction knowledge base</div><span class="pill neutral" id="kbStatus">Not loaded</span></div>
+      <div id="kbSummary" class="muted" style="font-size:12px;margin-bottom:18px">Currently using the limited illustrative demo rules. A missing match is not evidence of safety.</div>
+      <div class="field"><label for="kbFile">Choose a DDInter-compatible JSON file</label><input type="file" id="kbFile" accept=".json,application/json" style="width:100%;background:#111113;border:1px solid var(--line2);border-radius:9px;padding:12px;color:var(--text)"></div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:14px"><button class="primary" id="loadKb">Load knowledge base ↗</button><button class="secondary" id="clearKb">Unload database</button></div>
+      <div id="kbFeedback" class="muted tiny" style="margin-top:13px" aria-live="polite">No external dataset is bundled in this prototype.</div>
+    </section>
+    <section class="card"><div class="card-title">Recommended source</div><div class="eyebrow" style="margin-top:18px">DDInter 2.0 / third-party harmonized JSON</div><p class="muted" style="font-size:12px">The compatible knowledge base links drug names and identifiers to interaction severity and mechanism descriptions. It is a third-party compilation derived from DDInter 2.0, not an official DDInter export.</p><a class="secondary" style="display:inline-block;text-decoration:none;margin-top:5px" href="https://github.com/pbiondich/openmrs-ddi-knowledge-base/blob/main/out/ddi_knowledge_base.json" target="_blank" rel="noopener noreferrer">Open JSON download page ↗</a> <a class="secondary" style="display:inline-block;text-decoration:none;margin-top:5px" href="https://ddinter2.scbdd.com/download/" target="_blank" rel="noopener noreferrer">Official DDInter downloads ↗</a><p class="muted tiny" style="margin-top:12px">The full JSON is large (about 35 MB). On GitHub, use the download/raw option and then select the saved file above.</p><div class="notice"><span>ⓘ</span><div><strong>Coverage and license.</strong> DDInter is an academic database, not a regulator-approved clinical decision system. The source data is licensed for non-commercial use with attribution. Review the source repository's license, attribution and healthcare disclaimer before using or redistributing it.</div></div></section>
+  </div>
+  <section class="card" style="margin-top:14px"><div class="card-title">What changes after import?</div><div class="grid" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:14px"><div><div class="eyebrow">01 / Lookup</div><strong>Match drug names</strong><p class="muted tiny">Generic names and known aliases in the imported file are normalized for pair matching.</p></div><div><div class="eyebrow">02 / Evidence</div><strong>Show recorded severity</strong><p class="muted tiny">Severity and mechanism are shown only when present in the source record; missing fields remain unknown.</p></div><div><div class="eyebrow">03 / Gaps</div><strong>No false reassurance</strong><p class="muted tiny">A pair absent from the loaded dataset is reported as a coverage gap, not as safe or interaction-free.</p></div></div></section>
+</section>
+<section class="page hidden" id="page-audit">
+  <div class="eyebrow">Workspace / Traceability</div><h1 class="page-title">Audit trail.</h1><p class="page-intro">A local demonstration log of actions taken in this browser. This is not a tamper-proof or compliant clinical audit system.</p>
+  <section class="card"><div class="card-head"><div class="card-title">Recent activity</div><button class="secondary" id="clearAudit">Clear demo log</button></div><div id="auditTable"></div></section>
+</section>
+</div>
+</main>
+</div>
+<div id="toastRegion" aria-live="polite"></div>
+</div>
+<script>
+(function(){
+"use strict";
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today=new Date();
+$("#todayDate").textContent=today.toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"short",year:"numeric"});
+const medCatalog=["Warfarin","Amiodarone","Aspirin","Ibuprofen","Sertraline","Tramadol","Simvastatin","Clarithromycin","Metformin","Lisinopril","Atorvastatin","Apixaban"];
+const rules=[
+ {pair:["warfarin","amiodarone"],severity:"High",title:"Potentially increased anticoagulant effect",desc:"This combination may increase warfarin effect and bleeding risk. Clinical references commonly advise careful review and monitoring when these drugs are combined.",tags:["Potential bleeding risk","Monitoring may be relevant"],source:"Illustrative rule · verify against an authoritative reference"},
+ {pair:["warfarin","aspirin"],severity:"High",title:"Potential additive bleeding risk",desc:"Combining an anticoagulant with an antiplatelet medicine may increase bleeding risk. The clinical rationale and intended use need professional review.",tags:["Bleeding risk","Patient context matters"],source:"Illustrative rule · verify against an authoritative reference"},
+ {pair:["sertraline","tramadol"],severity:"Moderate",title:"Potential serotonergic interaction",desc:"Both medicines can affect serotonin signalling; concomitant use may increase the risk of serotonin toxicity and other adverse effects.",tags:["Serotonergic effects","Clinical review"],source:"Illustrative rule · verify against an authoritative reference"},
+ {pair:["simvastatin","clarithromycin"],severity:"High",title:"Potential increase in statin exposure",desc:"Clarithromycin can inhibit pathways involved in simvastatin metabolism, potentially increasing the risk of muscle toxicity.",tags:["Muscle toxicity","Check current guidance"],source:"Illustrative rule · verify against an authoritative reference"},
+ {pair:["ibuprofen","warfarin"],severity:"High",title:"Potential additive bleeding risk",desc:"NSAIDs and anticoagulants may increase bleeding risk when used together. Assess the patient's situation using a trusted clinical reference.",tags:["Bleeding risk","Patient context matters"],source:"Illustrative rule · verify against an authoritative reference"},
+ {pair:["aspirin","ibuprofen"],severity:"Moderate",title:"Potential bleeding / treatment interaction",desc:"Concurrent use can increase gastrointestinal adverse-effect concerns and may affect the antiplatelet action of low-dose aspirin depending on timing and regimen.",tags:["Gastrointestinal risk","Timing may matter"],source:"Illustrative rule · verify against an authoritative reference"}
+];
+let currentMeds=["Warfarin","Amiodarone","Aspirin","Metformin"];
+const seedPatients=[];
+let patients=[]; // Patient records are loaded from the signed-in user's Supabase rows; never hydrate another account from browser storage.
+let patientsLoadToken=0;
+function patientToRow(p){
+  const details={...p};
+  delete details.dbId; delete details.id; delete details.name; delete details.dateOfBirth; delete details.archived;
+  return {display_name:String(p.name||'Unnamed patient').trim().slice(0,160),date_of_birth:p.dateOfBirth||null,archived_at:p.archived?(p.archivedAt||new Date().toISOString()):null,details};
+}
+function patientFromRow(row){
+  const d=row.details&&typeof row.details==='object'?row.details:{};
+  return {...d,dbId:row.id,id:row.patient_code,name:row.display_name,dateOfBirth:row.date_of_birth||'',archived:Boolean(row.archived_at),archivedAt:row.archived_at||null,created:row.created_at?new Date(row.created_at).toLocaleDateString():d.created||'—',meds:Array.isArray(d.meds)?d.meds:[]};
+}
+async function loadPatientsFromSupabase(session){
+  if(!window.__sb||!session?.user?.id)return;
+  const token=++patientsLoadToken;
+  const tableNotice=document.querySelector('#page-patients .page-intro');
+  if(tableNotice)tableNotice.textContent='Patient records saved to your protected account workspace.';
+  const localNotice=document.querySelector('#page-patients .notice');
+  if(localNotice){localNotice.innerHTML='<span>✓</span><div><strong>Account-backed records.</strong> Patient records are loaded from your Supabase account.</div>';}
+  const {data,error}=await window.__sb.from('patients').select('id,patient_code,display_name,date_of_birth,archived_at,created_at,details').order('created_at',{ascending:false});
+  if(token!==patientsLoadToken)return;
+  if(error){toast('Could not load patient records from Supabase: '+error.message);return;}
+  patients=(data||[]).map(patientFromRow);
+  renderPatients();renderRecent();
+}
+function persistPatients(){
+  if(!window.__sb||!window.__sess?.user?.id)return;
+  const ownerId=window.__sess.user.id;
+  for(const p of patients){
+    const row=patientToRow(p);
+    if(p.dbId){
+      window.__sb.from('patients').update(row).eq('id',p.dbId).eq('owner_id',ownerId).then(({error})=>{if(error)toast('Could not update patient in Supabase: '+error.message);});
+    }else{
+      window.__sb.from('patients').insert({...row,owner_id:ownerId}).select('id,patient_code,display_name,date_of_birth,archived_at,created_at,details').single().then(({data,error})=>{
+        if(error){toast('Could not save patient to Supabase: '+error.message);return;}
+        const current=patients.find(x=>x.id===p.id&&!x.dbId);
+        if(current&&data){current.dbId=data.id;current.id=data.patient_code;current.created=new Date(data.created_at).toLocaleDateString();renderPatients();renderRecent();}
+      });
+    }
+  }
+}
+function nextPatientId(){let max=0;patients.forEach(p=>{const m=String(p.id||"").match(/^CL-(\d+)$/);if(m)max=Math.max(max,Number(m[1]));});return "CL-"+String(max+1).padStart(4,"0");}
+function parseDobInput(value){const v=String(value||"").trim();if(!v)return "";let y,m,d;let match;if((match=v.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/))){d=Number(match[1]);m=Number(match[2]);y=Number(match[3]);}else if((match=v.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/))){y=Number(match[1]);m=Number(match[2]);d=Number(match[3]);}else return null;const date=new Date(y,m-1,d);if(date.getFullYear()!==y||date.getMonth()!==m-1||date.getDate()!==d)return null;return `${String(y).padStart(4,"0")}-${String(m).padStart(2,"0")}-${String(d).padStart(2,"0")}`;}
+function ageAt(dob,when=new Date()){if(!dob)return null;const iso=parseDobInput(dob);if(!iso)return null;const d=new Date(iso+"T00:00:00");if(Number.isNaN(d.getTime())||d>when)return null;let a=when.getFullYear()-d.getFullYear();if(when.getMonth()<d.getMonth()||(when.getMonth()===d.getMonth()&&when.getDate()<d.getDate()))a--;return a>=0?a:null;}
+function patientAge(p){return p.dateOfBirth?ageAt(p.dateOfBirth,p.analysisDate?new Date(p.analysisDate):new Date()):p.ageAtAnalysis??null;}
+let showArchived=false, editingPatientId=null, pendingDuplicateName="";
+let analysisHistory=[];try{const h=JSON.parse(localStorage.getItem("clarityAnalysisHistoryV12")||"[]");analysisHistory=Array.isArray(h)?h:[]}catch{analysisHistory=[]}
+function persistHistory(){try{localStorage.setItem("clarityAnalysisHistoryV12",JSON.stringify(analysisHistory))}catch{toast("Could not persist analysis history in this browser.")}}
+let audits=[{time:new Date().toLocaleString(),action:"Demo workspace opened",detail:"Local sample data loaded"}];
+let latest=null;
+let importedKB=null, importedDrugById=new Map(), importedNameIndex=new Map(), importedPairIndex=new Map();
+function initials(n){return n.trim().split(/\s+/).slice(0,2).map(x=>x[0]?.toUpperCase()||"").join("")||"PT"}
+function severityClass(s){return s==="High"||s==="Major"?"high":s==="Moderate"?"moderate":s==="Lower"||s==="Low"||s==="Minor"?"low":"neutral"}
+function log(action,detail){audits.unshift({time:new Date().toLocaleString(),action,detail});audits=audits.slice(0,100);renderAudit()}
+let toastTimer;
+function toast(msg){const r=$("#toastRegion");r.innerHTML='<div class="toast">'+esc(msg)+'</div>';clearTimeout(toastTimer);toastTimer=setTimeout(()=>r.innerHTML="",3200)}
+function goto(page){const valid=["overview","new-analysis","patients","medications","interactions","reports","data-sources","audit"];if(!valid.includes(page))return;$$(".page").forEach(p=>p.classList.add("hidden"));$("#page-"+page).classList.remove("hidden");$$(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));$("#sidebar").classList.remove("open");if(page==="patients")renderPatients();if(page==="medications")renderMedications();if(page==="interactions")renderInteractions();if(page==="reports")renderReport();if(page==="audit")renderAudit();window.scrollTo({top:0,behavior:"smooth"})}
+document.addEventListener("click",e=>{const nav=e.target.closest("[data-page]");if(nav){goto(nav.dataset.page);return}const go=e.target.closest("[data-go]");if(go){if(go.dataset.go==="new-analysis"){editingPatientId=null;pendingDuplicateName="";$("#patientName").value="";$("#patientDob").value="";$("#patientConditions").value="";$("#patientAllergies").value="";currentMeds=[];renderChips();renderMedicationValidation()}goto(go.dataset.go);return}if(e.target.closest(".patient-row[data-id]")){const row=e.target.closest(".patient-row");const p=patients.find(x=>x.id===row.dataset.id);if(p){loadPatient(p);goto("new-analysis")}}});
+$("#mobileMenu").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
+$("#topNew").addEventListener("click",()=>goto("new-analysis"));
+const searchInput=$("#globalSearch"), searchResults=$("#globalSearchResults");
+let searchItems=[], searchActiveIndex=-1;
+const searchPages=[
+ {title:"Overview",sub:"Workspace dashboard",page:"overview",icon:"⌂",terms:"home dashboard"},
+ {title:"Patients",sub:"Patient profiles and recent analyses",page:"patients",icon:"♙",terms:"patient profile"},
+ {title:"Medications",sub:"Browse medication names",page:"medications",icon:"▤",terms:"drug medicine"},
+ {title:"Interactions",sub:"Review medication interaction findings",page:"interactions",icon:"⚕",terms:"risk drug pair"},
+ {title:"Reports",sub:"Review and print analysis summaries",page:"reports",icon:"▧",terms:"pdf report"},
+ {title:"Data sources",sub:"Manage the imported interaction knowledge base",page:"data-sources",icon:"▦",terms:"database import evidence"},
+ {title:"Audit log",sub:"Local prototype activity history",page:"audit",icon:"◷",terms:"history activity"}
+];
+function closeSearch(){searchResults.classList.add("hidden");searchInput.setAttribute("aria-expanded","false");searchInput.removeAttribute("aria-activedescendant");searchActiveIndex=-1}
+function makeSearchItems(query){
+ const q=normDrug(query); if(!q)return [];
+ const items=[];
+ patients.filter(p=>normDrug(p.name).includes(q)).slice(0,4).forEach(p=>items.push({kind:"patient",title:p.name,sub:"Patient profile · local demo",icon:initials(p.name),patientId:p.id,search:normDrug(p.name)}));
+ const catalog=importedKB?Array.from(importedDrugById.values()).map(d=>d.name).filter(Boolean):medCatalog;
+ const unique=Array.from(new Set(catalog));
+ unique.filter(m=>normDrug(m).includes(q)).sort((a,b)=>{const aa=normDrug(a),bb=normDrug(b);return (aa.startsWith(q)?0:1)-(bb.startsWith(q)?0:1)||aa.localeCompare(bb)}).slice(0,5).forEach(m=>items.push({kind:"medication",title:m,sub:importedKB?"Imported knowledge-base entry":"Demo catalog term",icon:"＋",medication:m,search:normDrug(m)}));
+ searchPages.filter(p=>normDrug(p.title+" "+p.terms).includes(q)).slice(0,3).forEach(p=>items.push({kind:"page",title:p.title,sub:p.sub,icon:p.icon,page:p.page,search:normDrug(p.title)}));
+ return items.slice(0,9)
+}
+function renderSearchResults(){
+ const q=searchInput.value.trim();searchItems=makeSearchItems(q);searchActiveIndex=-1;
+ if(!q){closeSearch();return}
+ if(!searchItems.length){searchResults.innerHTML='<div class="search-empty"><strong>No matches found.</strong><br>Try a medication name, patient label, or workspace page.</div><div class="search-footer">Search covers the currently loaded local workspace and medication knowledge base.</div>';searchResults.classList.remove("hidden");searchInput.setAttribute("aria-expanded","true");return}
+ let html="",lastKind="";
+ searchItems.forEach((item,i)=>{if(item.kind!==lastKind){lastKind=item.kind;html+='<div class="search-result-group">'+({patient:"Patients",medication:"Medications",page:"Workspace pages"}[item.kind])+'</div>'}
+ html+='<button type="button" role="option" aria-selected="false" id="global-search-result-'+i+'" class="search-result" data-search-index="'+i+'"><span class="search-result-icon">'+esc(item.icon)+'</span><span class="search-result-copy"><span class="search-result-title">'+esc(item.title)+'</span><span class="search-result-sub">'+esc(item.sub)+'</span></span><span class="search-result-hint">↗</span></button>'});
+ html+='<div class="search-footer">↑ ↓ to navigate · Enter to open · Esc to close</div>';
+ searchResults.innerHTML=html;searchResults.classList.remove("hidden");searchInput.setAttribute("aria-expanded","true")
+}
+function chooseSearchResult(item){
+ if(!item)return;
+ closeSearch();
+ if(item.kind==="patient"){const p=patients.find(x=>x.id===item.patientId);if(p)loadPatient(p);goto("new-analysis")}
+ else if(item.kind==="medication"){$("#medicationFilter").value=item.medication;goto("medications");renderMedications()}
+ else if(item.kind==="page")goto(item.page);
+ searchInput.value=""
+}
+searchInput.addEventListener("input",renderSearchResults);
+searchInput.addEventListener("focus",()=>{if(searchInput.value.trim())renderSearchResults()});
+searchInput.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){closeSearch();return}
+ if(searchResults.classList.contains("hidden")){if(e.key==="Enter"&&searchInput.value.trim()){renderSearchResults();if(searchItems.length)chooseSearchResult(searchItems[0]);else toast("No matching patient, medication, or page found.");e.preventDefault()}return}
+ if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();searchActiveIndex=(searchActiveIndex+(e.key==="ArrowDown"?1:-1)+searchItems.length)%searchItems.length;$$(".search-result").forEach((b,i)=>{b.setAttribute("aria-selected",String(i===searchActiveIndex));if(i===searchActiveIndex){searchInput.setAttribute("aria-activedescendant",b.id);b.scrollIntoView({block:"nearest"})}})}
+ else if(e.key==="Enter"){e.preventDefault();if(searchActiveIndex>=0)chooseSearchResult(searchItems[searchActiveIndex]);else if(searchItems.length)chooseSearchResult(searchItems[0]);else toast("No matching patient, medication, or page found.")}
+});
+searchResults.addEventListener("click",e=>{const b=e.target.closest("[data-search-index]");if(b)chooseSearchResult(searchItems[Number(b.dataset.searchIndex)])});
+document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))closeSearch()});
+function normDrug(s){return String(s||"").normalize("NFKD").toLowerCase().replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ")}
+function pairKey(a,b){return [String(a),String(b)].sort().join("::")}
+function getMatches(meds){
+ const names=meds.map(m=>String(m).trim()).filter(Boolean);
+ if(importedKB){
+  const out=[];
+  for(let i=0;i<names.length;i++)for(let j=i+1;j<names.length;j++){
+   const aIds=importedNameIndex.get(normDrug(names[i]))||[], bIds=importedNameIndex.get(normDrug(names[j]))||[];
+   for(const a of aIds)for(const b of bIds){if(a===b)continue;const rec=importedPairIndex.get(pairKey(a,b));if(!rec)continue;
+    const da=importedDrugById.get(a)||{}, db=importedDrugById.get(b)||{};const pair=[da.name||names[i],db.name||names[j]];
+    const group=importedKB.mechanisms?.[String(rec[3])]||{};const duplicate=out.some(x=>pairKey(x._ids[0],x._ids[1])===pairKey(a,b));if(duplicate)continue;
+    out.push({id:pairKey(a,b),pair,severity:rec[2]||"Unknown",title:group.text?"Recorded interaction mechanism":"Interaction recorded; mechanism unavailable",desc:group.text||"The source records an interaction for this pair but provides no mechanism description in the imported record.",tags:["DDInter 2.0-derived record", "Verify current clinical guidance"],source:"DDInter-derived knowledge base · source severity: "+(rec[2]||"Unknown"),_ids:[a,b]});
+   }
+  }
+  return out.sort((a,b)=>({Major:0,Moderate:1,Minor:2,Unknown:3}[a.severity]??4)-({Major:0,Moderate:1,Minor:2,Unknown:3}[b.severity]??4));
+ }
+ const lower=names.map(normDrug);return rules.filter(r=>r.pair.every(n=>lower.includes(normDrug(n)))).map((r,i)=>({...r,id:r.pair.join("-")+"-"+i}));
+}
+function getPairCoverage(meds){
+ const names=meds.map(m=>String(m).trim()).filter(Boolean), rows=[];
+ for(let i=0;i<names.length;i++)for(let j=i+1;j<names.length;j++){
+  let status="No matching rule";
+  if(importedKB){
+   const aIds=importedNameIndex.get(normDrug(names[i]))||[], bIds=importedNameIndex.get(normDrug(names[j]))||[];
+   if(!aIds.length||!bIds.length)status="Medication name not recognized in imported database";
+   else if(aIds.some(a=>bIds.some(b=>a!==b&&importedPairIndex.has(pairKey(a,b)))))status="Source record matched";
+   else status="No pair record in imported database";
+  }else if(rules.some(r=>r.pair.every(n=>[normDrug(names[i]),normDrug(names[j])].includes(normDrug(n)))))status="Illustrative rule matched";
+  rows.push({pair:[names[i],names[j]],status});
+ }
+ return rows;
+}
+function addMedication(value){const v=value.trim();if(!v)return;if(currentMeds.some(m=>m.toLowerCase()===v.toLowerCase())){toast("That medication is already in the list.");return}currentMeds.push(v);$("#medInput").value="";renderChips();renderMedicationValidation()}
+function renderChips(){$("#medCount").textContent=currentMeds.length+" added";$("#medChips").innerHTML=currentMeds.length?currentMeds.map((m,i)=>'<div class="med-chip"><span class="med-chip-icon" aria-hidden="true">Rx</span><span class="med-chip-name">'+esc(m)+'</span><button type="button" class="med-remove" aria-label="Remove '+esc(m)+' from medication list" data-remove-med="'+i+'"><span aria-hidden="true">−</span> Remove</button></div>').join(""):'<div class="med-list-empty"><span class="med-list-empty-icon" aria-hidden="true">＋</span><span><strong>No medications added yet</strong><small>Add each medication above to build the review list.</small></span></div>'}
+$("#addMed").addEventListener("click",()=>addMedication($("#medInput").value));
+$("#medInput").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();addMedication(e.target.value)}});
+$("#medChips").addEventListener("click",e=>{const b=e.target.closest("[data-remove-med]");if(b){currentMeds.splice(Number(b.dataset.removeMed),1);renderChips();renderMedicationValidation()}});
+$("#loadSample").addEventListener("click",()=>{currentMeds=["Warfarin","Amiodarone","Aspirin","Metformin"];$("#patientName").value="Sample patient 01";$("#patientDob").value="";$("#patientAgePreview").textContent="Age will be calculated for the analysis date.";$("#patientConditions").value="Sample context — requires clinician review";$("#patientAllergies").value="Not provided";renderChips();renderMedicationValidation();toast("Sample medications loaded.")});
+function loadPatient(p){if(p.archived){toast("This patient is archived. Restore them before starting a new analysis.");return}editingPatientId=p.id;currentMeds=[...p.meds];$("#patientName").value=p.name;$("#patientDob").value=p.dateOfBirth?(()=>{const z=p.dateOfBirth.split("-");return z.length===3?`${z[2]}/${z[1]}/${z[0]}`:p.dateOfBirth})():"";$("#patientAgePreview").textContent=p.dateOfBirth?"Age at last analysis: "+(patientAge(p)??"—"):"No date of birth recorded.";$("#patientConditions").value=p.conditions||"";$("#patientAllergies").value=p.allergies||"";renderChips();renderMedicationValidation();toast("Loaded "+p.name+" · "+p.id+" into the analysis form.")}
+function medicationRecognized(name){const n=normDrug(name);if(importedKB)return (importedNameIndex.get(n)||[]).length>0;return medCatalog.some(m=>normDrug(m)===n);}
+function unresolvedMeds(){return currentMeds.filter(m=>!medicationRecognized(m));}
+function setDobError(message){const el=$("#dobError");el.textContent=message||"";el.classList.toggle("hidden",!message);if(message)$("#patientDob").setAttribute("aria-invalid","true");else $("#patientDob").removeAttribute("aria-invalid");}
+function showDobError(message){setDobError(message);$("#patientDob").focus();}
+function renderMedicationValidation(){const alert=$("#unknownMedicationAlert"),unknown=unresolvedMeds();if(!unknown.length){alert.classList.add("hidden");alert.innerHTML="";return}alert.classList.remove("hidden");alert.innerHTML='<h3>Assessment blocked — medication verification required</h3><p>The following name(s) could not be matched to the active medication catalog: <strong>'+unknown.map(esc).join(", ")+'</strong>.</p><p>This does not prove the medication is invalid; it may be a brand name, spelling variation, or absent from the imported catalog. Correct the name before completing an assessment. You can save an incomplete draft.</p><div class="validation-actions"><button type="button" class="validation-cancel" id="cancelUnknownMeds">Cancel assessment</button><button type="button" class="validation-draft" id="saveUnknownDraft">Save incomplete draft</button></div>';}
+$("#unknownMedicationAlert").addEventListener("click",e=>{if(e.target.closest("#cancelUnknownMeds")){ $("#unknownMedicationAlert").classList.add("hidden");toast("Assessment cancelled. Your medication list is unchanged.");}if(e.target.closest("#saveUnknownDraft"))saveDraft();});
+function createAssessment(){if(currentMeds.length<2){toast("Add at least two medications to check pairs.");return}const unknown=unresolvedMeds();if(unknown.length){renderMedicationValidation();$("#unknownMedicationAlert").scrollIntoView({behavior:"smooth",block:"center"});return}const name=$("#patientName").value.trim();if(!name){toast("Enter a patient name or label.");return}const dobResult=readDobField();if(dobResult.error){showDobError(dobResult.error);return}const dob=dobResult.iso;if(dob){const enteredAge=ageAt(dob,new Date());if(enteredAge!==null&&enteredAge>120&&!confirm("This date of birth indicates an age of "+enteredAge+" years. Please verify the date. Continue anyway?"))return;}const duplicates=patients.filter(p=>!p.archived&&p.name.trim().toLowerCase()===name.toLowerCase()&&p.id!==editingPatientId);if(duplicates.length&&!pendingDuplicateName){pendingDuplicateName=name;const ids=duplicates.map(p=>p.id).join(", ");if(!confirm("A patient with this name already exists ("+ids+"). Create a separate patient record anyway? Choose Cancel to review existing records.")){pendingDuplicateName="";goto("patients");return}}pendingDuplicateName="";const now=new Date(), created=now.toLocaleString();let patient;if(editingPatientId){patient=patients.find(p=>p.id===editingPatientId);if(!patient){editingPatientId=null;return}Object.assign(patient,{name,dateOfBirth:dob,conditions:$("#patientConditions").value.trim()||"Not provided",allergies:$("#patientAllergies").value.trim()||"Not provided",meds:[...currentMeds],created,archived:false});}else{patient={id:nextPatientId(),name,dateOfBirth:dob,conditions:$("#patientConditions").value.trim()||"Not provided",allergies:$("#patientAllergies").value.trim()||"Not provided",meds:[...currentMeds],created,archived:false};patients.unshift(patient);editingPatientId=patient.id;}const matches=getMatches(currentMeds);const coverage=getPairCoverage(currentMeds);const unresolved=unresolvedMeds();patient.analysisDate=now.toISOString();patient.ageAtAnalysis=ageAt(dob,now);patient.status="Completed review";latest={patient:{...patient,meds:[...currentMeds]},matches:JSON.parse(JSON.stringify(matches)),coverage:JSON.parse(JSON.stringify(coverage)),created,analysisDate:now.toISOString(),ageAtAnalysis:patient.ageAtAnalysis,usedImportedKB:!!importedKB,status:"Completed review",unresolvedMeds:unresolved};analysisHistory.unshift(JSON.parse(JSON.stringify(latest)));persistHistory();persistPatients();log("Analysis run",patient.name+" · "+patient.id+" · "+currentMeds.length+" medications · "+matches.length+(importedKB?" source-record match(es)":" illustrative match(es)"));renderRecent();renderRisk();renderPatients();renderInteractions();renderReport();toast(importedKB?"Source-record lookup complete. Verify every finding.":"Illustrative demo scan complete. Verify every finding.");goto("interactions")}
+function saveDraft(){const name=$("#patientName").value.trim()||"Unnamed draft";const unknown=unresolvedMeds();const dobResult=readDobField();if(dobResult.error){showDobError(dobResult.error);return}const dob=dobResult.iso;const draft={id:editingPatientId||nextPatientId(),name,dateOfBirth:dob,conditions:$("#patientConditions").value.trim()||"Not provided",allergies:$("#patientAllergies").value.trim()||"Not provided",meds:[...currentMeds],created:new Date().toLocaleString(),archived:false,status:"Draft — incomplete",draft:true,unresolvedMeds:unknown};const i=patients.findIndex(p=>p.id===draft.id);if(i>=0)patients[i]={...patients[i],...draft};else patients.unshift(draft);editingPatientId=draft.id;persistPatients();log("Draft saved",draft.name+" · "+draft.id+" · unresolved medications: "+(unknown.join(", ")||"none"));renderPatients();toast("Draft saved locally. Assessment remains incomplete.")}
+$("#analysisForm").addEventListener("submit",e=>{e.preventDefault();createAssessment()});
+const formActions=$("#analysisForm .form-actions");const draftBtn=document.createElement("button");draftBtn.type="button";draftBtn.className="secondary";draftBtn.textContent="Save draft";draftBtn.addEventListener("click",saveDraft);formActions.insertBefore(draftBtn,formActions.lastElementChild);
+function readDobField(){const raw=$("#patientDob").value.trim();if(!raw)return {iso:"",error:""};const iso=parseDobInput(raw);if(!iso)return {iso:"",error:"Enter a real date as DD/MM/YYYY."};const parts=iso.split("-").map(Number);if(parts[0]<1800)return {iso:"",error:"Enter a year from 1800 onward."};if(new Date(iso+"T00:00:00")>new Date())return {iso:"",error:"Date of birth cannot be in the future."};return {iso,error:""};}
+// Add DD/MM/YYYY separators while typing, without blocking deletion or paste.
+$("#patientDob").addEventListener("input",e=>{const input=e.target;const before=input.value;const digits=before.replace(/\D/g,"").slice(0,8);let formatted=digits;if(digits.length>4)formatted=digits.slice(0,2)+"/"+digits.slice(2,4)+"/"+digits.slice(4);else if(digits.length>2)formatted=digits.slice(0,2)+"/"+digits.slice(2);if(input.value!==formatted){const pos=input.selectionStart??before.length;const digitsBefore=before.slice(0,pos).replace(/\D/g,"").length;let nextPos=digitsBefore;if(digitsBefore>2)nextPos++;if(digitsBefore>4)nextPos++;input.value=formatted;try{input.setSelectionRange(nextPos,nextPos)}catch(_){}}if(!formatted){$("#patientAgePreview").textContent="Age will be calculated for the analysis date.";setDobError("");return}const result=readDobField();const age=result.error?null:ageAt(result.iso,new Date());setDobError(result.error);$("#patientAgePreview").textContent=result.error?"":(age===null?"Check the date of birth.":"Calculated age today: "+age)});
+
+function renderRecent(){const el=$("#recentList");el.innerHTML=patients.filter(p=>!p.archived).slice(0,5).map(p=>{const m=getMatches(p.meds);const highest=m.some(x=>x.severity==="High"||x.severity==="Major")?"High":m.some(x=>x.severity==="Moderate")?"Moderate":m.some(x=>x.severity==="Minor"||x.severity==="Lower")?"Lower":m.length?"Unknown":"No match";return '<div class="patient-row" data-id="'+p.id+'"><div class="initials">'+esc(initials(p.name))+'</div><div class="patient-info"><div class="patient-name">'+esc(p.name)+'</div><div class="patient-date">'+esc(p.created)+'</div></div><span class="pill '+severityClass(highest)+'">'+esc(m.length?m.length+" match"+(m.length===1?"":"es"):"No match")+'</span><span class="muted">›</span></div>'}).join("")}
+function renderRisk(){
+ const m=latest&&Array.isArray(latest.matches)?latest.matches:[];
+ const high=m.filter(x=>["High","Major"].includes(String(x.severity||"").trim())).length;
+ const moderate=m.filter(x=>String(x.severity||"").trim()==="Moderate").length;
+ const low=m.filter(x=>["Lower","Low","Minor"].includes(String(x.severity||"").trim())).length;
+ const unknown=Math.max(0,m.length-high-moderate-low);
+ $("#riskTotal").textContent=String(m.length);
+ $("#highCount").textContent=String(high); $("#modCount").textContent=String(moderate); $("#lowCount").textContent=String(low);
+ const unknownRow=$("#unknownCount"); if(unknownRow)unknownRow.textContent=String(unknown);
+ const donut=$(".donut");
+ if(donut){
+  if(!m.length){donut.style.background="conic-gradient(var(--line2) 0 100%)";}
+  else {let p=0;const stops=[];[[high,"var(--red)"],[moderate,"var(--amber)"],[low,"var(--green)"],[unknown,"var(--muted)"]].forEach(([count,color])=>{if(count>0){const next=p+count/m.length*100;stops.push(`${color} ${p}% ${next}%`);p=next;}});donut.style.background=`conic-gradient(${stops.join(",")})`;}
+ }
+ const status=$("#riskDataStatus");if(status)status.textContent=latest?(latest.usedImportedKB?"Imported source data":"Illustrative rules") : "Awaiting analysis";
+ const label=$(".donut-label");if(label)label.textContent=m.length?"findings in latest review":"run an analysis";
+}
+function renderPatients(){const q=($("#patientFilter")?.value||"").toLowerCase();const list=patients.filter(p=>!!p.archived===showArchived&&String(p.name).toLowerCase().includes(q));const toggle=$("#showArchived");if(toggle)toggle.textContent=showArchived?"Show active patients":"Show archived";$("#patientTable").innerHTML=list.length?'<div class="table-wrap"><table class="table"><thead><tr><th>Patient</th><th>Age at last analysis</th><th>Medications</th><th>Status</th><th>Last activity</th><th>Actions</th></tr></thead><tbody>'+list.map(p=>{const m=getMatches(p.meds||[]);const status=p.archived?"Archived":p.draft?"Draft — incomplete":p.status||"Profile";return '<tr><td><strong>'+esc(p.name)+'</strong><div class="muted tiny">'+esc(p.id)+' · Local profile</div></td><td>'+esc(p.ageAtAnalysis??(patientAge(p)??"Not provided"))+'</td><td>'+(p.meds||[]).length+'</td><td>'+esc(status)+'</td><td>'+esc(p.created||"—")+'</td><td><button class="secondary" data-open-patient="'+esc(p.id)+'" '+(p.archived?'disabled':'')+'>Open</button> <button class="secondary" data-archive-patient="'+esc(p.id)+'">'+(p.archived?'Restore':'Archive')+'</button></td></tr>'}).join("")+'</tbody></table></div>':'<div class="empty"><strong>No '+(showArchived?'archived':'active')+' profiles found.</strong> Try another search or create a new demo analysis.</div>'}
+$("#showArchived").addEventListener("click",()=>{showArchived=!showArchived;renderPatients()});
+$("#patientTable").addEventListener("click",e=>{const a=e.target.closest("[data-archive-patient]");if(a){const p=patients.find(x=>x.id===a.dataset.archivePatient);if(!p)return;if(p.archived){p.archived=false;log("Patient restored",p.name+" · "+p.id)}else if(confirm("Archive "+p.name+" ("+p.id+")? Previous analysis snapshots will be preserved.")){p.archived=true;log("Patient archived",p.name+" · "+p.id)}persistPatients();renderPatients();return}const b=e.target.closest("[data-open-patient]");if(b){const p=patients.find(x=>x.id===b.dataset.openPatient);if(p) {loadPatient(p);goto("new-analysis")}}});
+
+$("#patientFilter").addEventListener("input",renderPatients);
+function renderMedications(){const q=($("#medicationFilter")?.value||"").toLowerCase();const sourceList=importedKB?Array.from(importedDrugById.values()).map(d=>d.name).filter(Boolean):medCatalog;const list=Array.from(new Set(sourceList)).filter(m=>m.toLowerCase().includes(q)).sort((a,b)=>a.localeCompare(b));$("#medCountPill").textContent=list.length.toLocaleString()+" terms";$("#medicationGrid").innerHTML=list.map((m,i)=>'<div class="card" style="padding:14px"><div style="display:flex;align-items:center;gap:10px"><div class="initials">'+esc(initials(m))+'</div><div style="flex:1;min-width:0"><strong>'+esc(m)+'</strong><div class="muted tiny">'+(importedKB?'Imported database entry':'Demo catalog entry')+'</div></div></div><button class="secondary" style="margin-top:12px;width:100%" data-add-catalog="'+esc(m)+'">Add to analysis ＋</button></div>').join("")||'<div class="empty">No demo terms found.</div>'}
+$("#medicationFilter").addEventListener("input",renderMedications);
+$("#medicationGrid").addEventListener("click",e=>{const b=e.target.closest("[data-add-catalog]");if(b){addMedication(b.dataset.addCatalog);goto("new-analysis")}});
+function renderInteractions(){
+ const el=$("#interactionResults"), summary=$("#reviewSummary");
+ const hasReview=!!latest, usingSource=hasReview?!!latest.usedImportedKB:!!importedKB;
+ if(!hasReview){
+  $("#interactionSubtitle").textContent="No review run yet";
+  $("#interactionNoticeTitle").textContent="Prototype only · not clinically validated.";
+  $("#interactionNoticeText").textContent="Run an analysis to see results for the exact medication list you entered. No sample findings are shown here, so the review cannot be mistaken for a result from a different patient or regimen.";
+  summary.classList.add("hidden"); summary.innerHTML="";
+  el.innerHTML='<div class="empty"><strong>Your findings will appear here.</strong>Start a new analysis and enter at least two medications. Results will be tied to that exact list. No matched record does not mean a combination is safe.</div>';
+  return;
+ }
+ const matches=latest.matches||[], meds=latest.patient.meds||[];
+ $("#interactionSubtitle").textContent="Review for "+latest.patient.name+" · generated "+latest.created;
+ $("#interactionNoticeTitle").textContent=usingSource?"Imported source records · not clinically validated.":"Illustrative demo rules · not clinical evidence.";
+ $("#interactionNoticeText").textContent=usingSource?"Severity is reported by the imported DDInter-derived source; it is not calculated for this patient. The dataset may be incomplete or outdated. Confirm each record in current clinical guidance. A missing record is a coverage gap, not evidence of safety.":"These findings come from a small illustrative rule set, not a validated clinical database. They demonstrate the interface only. Do not use the labels to make treatment decisions; confirm all pairs in a current clinical reference.";
+ const major=matches.filter(m=>["Major","High"].includes(m.severity)).length;
+ const unknown=matches.filter(m=>!["Major","High","Moderate","Minor","Lower","Low"].includes(m.severity)).length;
+ summary.classList.remove("hidden");
+ summary.innerHTML='<div class="review-stat"><div class="review-stat-label">Matched records</div><div class="review-stat-value">'+matches.length+'</div></div><div class="review-stat"><div class="review-stat-label">'+(usingSource?'Source-labelled major / high':'Demo-labelled major / high')+'</div><div class="review-stat-value">'+major+'</div></div><div class="review-stat"><div class="review-stat-label">Unknown severity</div><div class="review-stat-value">'+unknown+'</div></div><div class="review-medications"><strong>Exact medication list reviewed · '+meds.length+' medications</strong>'+meds.map(esc).join(' <span aria-hidden="true">·</span> ')+'</div>';
+ if(!matches.length){
+  el.innerHTML='<div class="empty"><strong>No '+(usingSource?'matching records in the imported database.':'illustrative rules matched this list.')+'</strong>'+(usingSource?'This is a database coverage gap, not evidence that the combination is safe. Check a validated, current clinical reference.':'The prototype has only a small set of illustrative rules. No match does not establish that this regimen has no interactions.')+'</div>';return;
+ }
+ el.innerHTML=matches.map((m,i)=>'<article class="interaction-item"><div class="interaction-top"><div><div class="finding-kicker">Finding '+(i+1)+' · '+(usingSource?'Source record':'Illustrative example')+'</div><div class="interaction-pair">'+esc(m.pair[0])+' <span style="color:#B7792D">×</span> '+esc(m.pair[1])+'</div><div class="muted tiny">'+esc(m.title||'Interaction record')+'</div></div><span class="pill '+severityClass(m.severity)+'">'+esc(m.severity)+(usingSource?' · source label':' · demo label')+'</span></div><div class="finding-kicker">Recorded detail</div><p>'+esc(m.desc||'No interaction detail is available in this record.')+'</p><div class="interaction-meta">'+(m.tags||[]).map(t=>'<span class="tag">'+esc(t)+'</span>').join('')+'</div><div class="finding-evidence"><strong>Evidence provenance</strong><br>'+esc(m.source||'No source detail available in the record.')+'<br><strong>Interpretation limit:</strong> This display does not establish patient-specific risk, clinical significance, or a recommended action.</div></article>').join('');
+ const coverage=latest.coverage||getPairCoverage(meds); const gaps=coverage.filter(c=>c.status!==(usingSource?'Source record matched':'Illustrative rule matched')); el.insertAdjacentHTML('beforeend','<section class="coverage-panel"><div class="coverage-head"><strong>Pair coverage</strong><span class="muted tiny">'+coverage.length+' possible pairs · '+(coverage.length-gaps.length)+' matched</span></div><p class="muted tiny">Every medication pair is listed below. An unmatched pair is not proof of safety.</p><div class="coverage-list">'+coverage.map(c=>'<div class="coverage-row"><span>'+esc(c.pair[0])+' × '+esc(c.pair[1])+'</span><span class="coverage-status">'+esc(c.status)+'</span></div>').join('')+'</div></section>');
+}
+function renderReport(){const el=$("#reportContent");if(!latest){$("#reportMeta").textContent="No analysis generated yet";el.innerHTML='<div class="empty"><strong>Your report will appear here.</strong>Run an analysis with at least one medication pair to generate a review summary.</div>';return}$("#reportMeta").textContent="Created "+latest.created+" · "+latest.matches.length+(latest.usedImportedKB?" source-record match(es)":" illustrative match(es)");el.innerHTML='<div class="report-paper"><div style="display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap"><div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#9b6948">Clarity / Medication safety</div><h2>Medication interaction<br>review summary</h2><div class="muted" style="font-size:12px;margin-top:8px">Prototype report · Not for clinical use</div></div><div style="text-align:right;font-size:11px;color:#746a68">Generated<br>'+esc(latest.created)+'</div></div><div class="report-line"></div><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;font-size:12px"><div><div class="muted">Patient label / ID</div><strong>'+esc(latest.patient.name)+' · '+esc(latest.patient.id||"—")+'</strong></div><div><div class="muted">Age at analysis</div><strong>'+esc(latest.ageAtAnalysis??latest.patient.ageAtAnalysis??"Not provided")+'</strong></div><div><div class="muted">Medication list</div><strong>'+latest.patient.meds.map(esc).join(", ")+'</strong></div><div><div class="muted">Conditions / notes</div><strong>'+esc(latest.patient.conditions)+'</strong></div></div><div class="report-line"></div><h3 style="font:23px var(--serif);font-weight:400">Findings for clinician review</h3><div class="interaction-list" style="margin-top:12px">'+(latest.matches.length?latest.matches.map(m=>'<article class="interaction-item"><div class="interaction-top"><div class="interaction-pair">'+esc(m.pair[0])+' × '+esc(m.pair[1])+'</div><span class="pill '+severityClass(m.severity)+'">'+esc(m.severity)+(latest.usedImportedKB?' · source severity':' · illustrative')+'</span></div><p>'+esc(m.desc)+'</p><div class="muted tiny">Evidence source: '+esc(m.source)+'</div></article>').join(""):'<p>'+(latest.usedImportedKB?'No matching records were found in this imported dataset. This is a coverage gap, not evidence that the regimen is safe.':'No matches in the small illustrative rule set. This does not establish that the regimen has no interactions.')+'</p>')+'</div><div class="report-line"></div><h3>Pair coverage</h3><p style="font-size:12px">'+(latest.coverage||getPairCoverage(latest.patient.meds)).map(c=>'<strong>'+esc(c.pair[0])+' × '+esc(c.pair[1])+'</strong> — '+esc(c.status)).join('<br>')+'</p><div class="report-line"></div><p style="font-size:11px;color:#6f6260"><strong>Important limitation:</strong> This report was generated by a prototype and is not a complete drug-interaction assessment. '+(latest.usedImportedKB?'Interaction records come from a third-party DDInter-derived dataset; coverage is incomplete and source severity is not a patient-specific risk assessment.':'The current results use a limited illustrative rule set.')+' It does not account for all patient factors and must not be used to make treatment decisions. Confirm all findings with a trusted, current clinical reference and a qualified clinician.</p></div>'}
+$("#printReport").addEventListener("click",()=>{if(!latest){toast("Run an analysis before exporting a report.");return}log("Report print requested",latest.patient.name);window.print()});
+function renderAudit(){const el=$("#auditTable");if(!el)return;el.innerHTML=audits.length?'<div class="table-wrap"><table class="table"><thead><tr><th>Timestamp</th><th>Action</th><th>Details</th></tr></thead><tbody>'+audits.map(a=>'<tr><td>'+esc(a.time)+'</td><td>'+esc(a.action)+'</td><td>'+esc(a.detail)+'</td></tr>').join("")+'</tbody></table></div>':'<div class="empty">No local activity recorded.</div>'}
+$("#clearAudit").addEventListener("click",()=>{audits=[];renderAudit();toast("Local demo log cleared.")});
+function buildImportedKB(data){
+ if(!data||!Array.isArray(data.drugs)||!Array.isArray(data.interactions)||!data.mechanisms)throw new Error("This JSON does not look like the supported DDInter knowledge-base format (expected drugs, interactions and mechanisms). ");
+ importedDrugById=new Map();importedNameIndex=new Map();importedPairIndex=new Map();
+ const addName=(name,id)=>{const n=normDrug(name);if(!n)return;const arr=importedNameIndex.get(n)||[];if(!arr.includes(id))arr.push(id);importedNameIndex.set(n,arr)};
+ for(const d of data.drugs){if(!d||!d.id||!d.name)continue;importedDrugById.set(String(d.id),d);addName(d.name,String(d.id));addName(d.rxnorm_name,String(d.id));if(Array.isArray(d.brand_names))d.brand_names.forEach(n=>addName(n,String(d.id)));if(Array.isArray(d.synonyms))d.synonyms.forEach(n=>addName(n,String(d.id)));}
+ for(const r of data.interactions){if(!Array.isArray(r)||r.length<3)continue;importedPairIndex.set(pairKey(r[0],r[1]),r);}
+ importedKB=data;const unknown=data.interactions.filter(r=>String(r[2]).toLowerCase()==="unknown").length;
+ $("#kbStatus").textContent="Loaded";$("#kbStatus").className="pill low";$("#kbSummary").textContent=importedDrugById.size.toLocaleString()+" drug entries · "+importedPairIndex.size.toLocaleString()+" unique interaction pairs · "+unknown.toLocaleString()+" marked Unknown. Pair matches use source records; absence is a coverage gap.";
+ $("#kbFeedback").textContent="Loaded into browser memory. This data will need to be reloaded after refreshing or closing the page.";
+ log("Knowledge base loaded",importedDrugById.size+" drugs; "+importedPairIndex.size+" interaction pairs");renderMedications();renderInteractions();renderRisk();if(latest){latest.matches=getMatches(latest.patient.meds);latest.coverage=getPairCoverage(latest.patient.meds);renderInteractions();renderReport()}toast("Knowledge base loaded. Run an analysis to check a medication list.");
+}
+$("#loadKb").addEventListener("click",async()=>{const file=$("#kbFile").files?.[0];if(!file){toast("Choose the JSON knowledge-base file first.");return}if(file.size>250*1024*1024){toast("That file is over 250 MB. Use the documented 35 MB JSON export.");return}$("#kbFeedback").textContent="Reading and indexing the knowledge base… this can take a little while.";$("#loadKb").disabled=true;try{const data=JSON.parse(await file.text());buildImportedKB(data)}catch(e){$("#kbFeedback").textContent="Could not load this file: "+(e.message||"invalid JSON");toast("Import failed. Check that you selected the compatible knowledge-base JSON.")}finally{$("#loadKb").disabled=false}});
+$("#clearKb").addEventListener("click",()=>{importedKB=null;importedDrugById=new Map();importedNameIndex=new Map();importedPairIndex=new Map();$("#kbStatus").textContent="Not loaded";$("#kbStatus").className="pill neutral";$("#kbSummary").textContent="Currently using the limited illustrative demo rules. A missing match is not evidence of safety.";$("#kbFeedback").textContent="Knowledge base unloaded. No external data is stored by this page.";log("Knowledge base unloaded","Returned to illustrative demo rules");renderMedications();renderInteractions();renderRisk();if(latest){latest.matches=getMatches(latest.patient.meds);latest.coverage=getPairCoverage(latest.patient.meds);renderInteractions();renderReport()}toast("Returned to demo mode.")});
+function renderAll(){renderChips();persistPatients();renderRecent();renderRisk();renderPatients();renderMedications();renderInteractions();renderReport();renderAudit()}
+renderAll();
+const style=document.createElement("style");style.textContent="@media print{body{background:white!important;color:#111!important}.sidebar,.topbar,.page:not(#page-reports),#page-reports>.eyebrow,#page-reports>.page-title,#page-reports>.page-intro,#page-reports>.page-toolbar,.notice{display:none!important}.app{display:block!important}.main{overflow:visible!important}.content{padding:0!important;max-width:none!important}#page-reports{display:block!important}.report-paper{max-width:none!important;box-shadow:none!important;border-radius:0!important;padding:0!important;background:white!important;color:#111!important}.report-paper .interaction-item{break-inside:avoid}.report-paper .muted,.report-paper p{color:#444!important}.report-paper .pill{color:#222!important;border-color:#777!important}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}";document.head.appendChild(style);
+/* ---- Clarity extras (priority, overrides, audit chain, metrics, FHIR, openFDA) ---- */
+{
+/* Clarity extras: context-aware priority, override tracking, persistence, audit, metrics, FHIR import, openFDA lookup, roles. Loads after index.html's main script. */
+const sb=()=>window.__sb,uid=()=>window.__sess?.user?.id,LS=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},SS=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
+let M=LS("clarityMetrics",{crit:0,over:0,ratings:[],acc:[],base:{over:40,sat:50},ade:""}),lastHash=LS("clarityLastHash","0"),res={};const role="Clinician";
+const saveM=()=>SS("clarityMetrics",M),db=(t,row)=>sb()&&uid()?sb().from(t).insert(row).then(r=>{if(r.error)console.warn(t,r.error.message);return r}):Promise.resolve();
+const hash=s=>{let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return(h>>>0).toString(16).padStart(8,"0")};
+const COND={ulcer:/ulcer|bleed|\bgi\b|gastr/i,renal:/renal|kidney|ckd|nephro/i,liver:/liver|hepat|cirrh/i,qt:/\bqt|arrhythm|torsade/i,hf:/heart failure|\bhf\b|cardiomyop/i};
+const BUMP=[[/warfarin|aspirin|ibuprofen|naproxen|clopidogrel|apixaban|rivaroxaban/,"ulcer",2],[/lisinopril|ibuprofen|spironolactone|digoxin|metformin/,"renal",2],[/simvastatin|amiodarone|methotrexate|paracetamol|acetaminophen/,"liver",2],[/amiodarone|clarithromycin|azithromycin|sotalol|haloperidol|ondansetron/,"qt",2],[/ibuprofen|diclofenac|naproxen|digoxin/,"hf",2]];
+const base=s=>({Major:6,High:6,Moderate:3,Lower:1,Low:1,Minor:1}[String(s).trim()]??2),lvl=n=>n>=8?"Critical":n>=5?"High":n>=3?"Moderate":"Low";
+function score(m,p){const names=m.pair.map(x=>String(x).toLowerCase()),why=[];let s=base(m.severity);
+ for(const[re,k,b]of BUMP)if(names.some(n=>re.test(n))&&COND[k].test(p.conditions||"")){s+=b;why.push(k==="ulcer"?"GI bleed/ulcer history":k==="renal"?"renal impairment":k==="liver"?"liver disease":k==="qt"?"QT/arrhythmia risk":"heart failure")}
+ const age=typeof patientAge==="function"?patientAge(p):null;if(age!=null&&age>=65){s+=1;why.push("age "+age)}
+ const al=String(p.allergies||"").toLowerCase();if(al&&names.some(n=>n.length>3&&al.includes(n))){s+=3;why.push("allergy on file")}
+ return{s,why,level:lvl(s)}}
+function summary(){const plain=false;const L=latest;if(!L)return"";const a=(L.matches||[]).map(m=>({m,...score(m,L.patient)})).sort((x,y)=>y.s-x.s),c=a.filter(x=>x.level==="Critical").length,t=a[0];
+ if(!t)return"No records matched for this medication list. This is a coverage limit, not proof of safety. Confirm in a current clinical reference.";
+ if(plain)return`Your medicines were checked together. ${c?c+" combination(s) need urgent review by your pharmacist or doctor. ":"No urgent combinations were found. "}The most important is ${t.m.pair.join(" with ")}. Do not stop any medicine without speaking to your care team.`;
+ return`${a.length} finding(s) for ${L.patient.name}: ${c} critical, ${a.filter(x=>x.level==="High").length} high, ${a.filter(x=>["Moderate","Low"].includes(x.level)).length} lower. Top priority: ${t.m.pair.join(" + ")} (${t.level}${t.why.length?"; raised by "+t.why.join(", "):""}). Suggested action: ${t.s>=8?"review for an alternative before dispensing":"monitor and counsel"}.`}
+// --- audit: wrap log() -> hash-chained, mirrored to Supabase
+const _log=log;log=function(action,detail){_log(action,detail);const t=new Date().toISOString(),h=hash(lastHash+t+role+action+detail);db("audit_log",{role,action,detail:String(detail||"").slice(0,500),prev_hash:lastHash,hash:h});lastHash=h;SS("clarityLastHash",h)};
+// --- persist assessments
+const _ph=persistHistory;persistHistory=function(){_ph();if(latest&&latest.__saved!==latest.created){latest.__saved=latest.created;res={};latest.matches.forEach(m=>{m.id=m.id||m.pair.join("|")});const cc=latest.matches.filter(m=>score(m,latest.patient).level==="Critical").length;if(!(sb()&&uid())){M.crit+=cc;saveM()}db("assessments",{patient_code:latest.patient.id,meds:latest.patient.meds,findings:latest.matches,used_kb:latest.usedImportedKB,summary:summary(),critical_count:cc}).then(loadMetrics)}};
+// --- decorate interactions page
+const _ri=renderInteractions;
+renderInteractions=function(){_ri();(latest?.matches||[]).forEach(m=>{m.id=m.id||m.pair.join("|")});const box=document.getElementById("interactionResults");if(!latest||!box)return;
+ const items=[...box.querySelectorAll(".interaction-item")];if(!items.length)return;
+ const rows=items.map((el,i)=>({el,m:latest.matches[i],...score(latest.matches[i]||{pair:[],severity:""},latest.patient)})).sort((a,b)=>b.s-a.s);
+ const high=rows.filter(r=>r.s>=5),low=rows.filter(r=>r.s<5);
+ const dec=r=>{const id=r.m.id,d=res[id];const tag=`<div style="margin-top:10px"><span class="pill ${severityClass(r.level==="Critical"?"High":r.level)}">Patient priority: ${r.level}</span> <span class="muted tiny">${r.why.length?"Raised by "+esc(r.why.join(", ")):"No patient factors matched"}</span></div>`;
+  const bar=d?`<div class="tiny">${d.t==="ack"?"Acknowledged":"Overridden: "+esc(d.reason)}</div>`:`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><button class="secondary" data-ack="${esc(id)}">Acknowledge</button>${`<select data-or="${esc(id)}" style="background:var(--panel);border:1px solid var(--line2);color:var(--text);border-radius:9px;padding:9px 10px"><option value="">Override with reason…</option><option>Benefit outweighs risk</option><option>Monitoring in place</option><option>Dose adjusted</option><option>Stable on combination</option></select>`}<button class="secondary" data-fda="${esc(id)}">Check FDA label</button></div><div class="tiny muted" data-fdaout="${esc(id)}"></div>`;
+  r.el.insertAdjacentHTML("beforeend",tag+bar)};
+ rows.forEach(dec);rows.forEach(r=>box.appendChild(r.el));
+ if(low.length){const d=document.createElement("details");d.style.margin="10px 0";d.innerHTML=`<summary class="muted">${low.length} lower-priority finding(s), collapsed to reduce alert fatigue</summary>`;low.forEach(r=>d.appendChild(r.el));box.appendChild(d)}
+ const cov=box.querySelector(".coverage-panel");if(cov)box.appendChild(cov);
+ let s=document.getElementById("clSum");if(!s){s=document.createElement("section");s.id="clSum";s.className="card";s.style.marginBottom="16px";box.parentNode.insertBefore(s,box)}
+ s.innerHTML=`<div class="finding-kicker">Patient-specific risk summary</div><p>${esc(summary())}</p><div class="muted tiny">Was this accurate? <button class="secondary" data-acc="1">Yes</button> <button class="secondary" data-acc="0">No</button> &nbsp; Rate this report: ${[1,2,3,4,5].map(n=>`<button class="secondary" data-rate="${n}">${n}</button>`).join(" ")}</div>`};
+document.addEventListener("click",async e=>{const d=e.target.dataset||{};
+ if(d.ack){res[d.ack]={t:"ack"};dbDec(d.ack,"acknowledged","");log("Alert acknowledged",d.ack);renderInteractions()}
+ if(d.acc){M.acc.push(d.acc==="1");const pr=db("feedback",{kind:"accuracy",value:+d.acc});saveM();log("Summary accuracy check",d.acc==="1"?"accurate":"inaccurate");toast("Thanks, recorded.");renderMetrics();pr.then(loadMetrics)}
+ if(d.rate){M.ratings.push(+d.rate);const pr=db("feedback",{kind:"rating",value:+d.rate});saveM();log("Report rating",d.rate+"/5");toast("Thanks, recorded.");renderMetrics();pr.then(loadMetrics)}
+ if(d.fda){const[a,b]=(latest.matches.find(m=>m.id===d.fda)||{pair:[]}).pair,out=document.querySelector(`[data-fdaout="${CSS.escape(d.fda)}"]`);out.textContent="Checking FDA label…";
+  try{const r=await fetch(`https://api.fda.gov/drug/label.json?search=openfda.generic_name:"${encodeURIComponent(a)}"&limit=1`),j=await r.json(),t=(j.results?.[0]?.drug_interactions||[]).join(" "),i=t.toLowerCase().indexOf(String(b).toLowerCase());
+   out.textContent=!t?"No FDA label interaction text found for "+a+".":i<0?"FDA label for "+a+" has interaction text but does not mention "+b+".":"FDA label ("+a+"): …"+t.slice(Math.max(0,i-120),i+260)+"…"}catch{out.textContent="Could not reach openFDA."}}
+ if(d.fi!==undefined)fhirImport(d.fi)});
+document.addEventListener("change",e=>{const t=e.target;if(t.dataset.or&&t.value){const m=latest.matches.find(x=>x.id===t.dataset.or);res[t.dataset.or]={t:"over",reason:t.value};if(m&&score(m,latest.patient).level==="Critical")M.over++;saveM();const pr=dbDec(t.dataset.or,"overridden",t.value);log("Alert overridden",t.dataset.or+" reason: "+t.value);renderInteractions();renderMetrics();pr.then(loadMetrics)}});
+function dbDec(id,decision,reason){const m=latest.matches.find(x=>x.id===id);return db("alert_decisions",{patient_code:latest.patient.id,finding_id:id,level:m?score(m,latest.patient).level:"",decision,reason,role})}
+// --- reports: summary + audit tools
+const _rr=renderReport;renderReport=function(){_rr();const el=document.getElementById("reportContent");if(latest&&el&&!el.querySelector(".cl-sum"))el.insertAdjacentHTML("afterbegin",`<div class="cl-sum card" style="margin-bottom:16px"><div class="finding-kicker">Risk summary</div><p>${esc(summary())}</p></div>`)};
+document.getElementById("auditTable")?.insertAdjacentHTML("beforebegin",`<div class="muted tiny" style="margin:8px 0">Entries are hash-chained and mirrored to the append-only <code>audit_log</code> table (no update or delete allowed). <button class="secondary" id="clCsv">Export CSV</button></div>`);
+document.getElementById("clCsv")?.addEventListener("click",()=>{const r=[["time","action","detail"],...audits.map(a=>[a.time,a.action,a.detail])].map(x=>x.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(",")).join("\n"),a=document.createElement("a");a.href="data:text/csv;charset=utf-8,"+encodeURIComponent(r);a.download="clarity-audit.csv";a.click()});
+// --- clear button should not erase audit trail
+const cl=document.getElementById("clearAudit");if(cl){cl.replaceWith(cl.cloneNode(false));const n=document.getElementById("clearAudit");n.remove()}
+// --- live metrics on overview
+function renderMetrics(){const c=[...document.querySelectorAll("#page-overview .card.metric")];if(c.length<3)return;
+ const or=M.crit?Math.round(100*M.over/M.crit):null,tO=Math.round(M.base.over*.7),sat=M.ratings.length?Math.round(100*M.ratings.filter(r=>r>=4).length/M.ratings.length):null,tS=Math.min(100,Math.round(M.base.sat*1.4)),acc=M.acc.length?Math.round(100*M.acc.filter(Boolean).length/M.acc.length):null;
+ const inp='style="width:58px;background:var(--panel);border:1px solid var(--line2);color:var(--text);border-radius:6px;padding:2px 5px"';
+ const set=(el,ok,val,label,foot)=>{const p=el.querySelector(".pill");p.textContent=val==null?"Target":ok?"Target met":"Live";p.className="pill "+(ok?"low":"neutral");el.querySelector(".metric-value").textContent=val==null?el.dataset.def:val+"%";el.querySelector(".metric-label").textContent=label;el.querySelector(".metric-foot").innerHTML=foot};
+ c.forEach((el,i)=>{if(!el.dataset.def)el.dataset.def=el.querySelector(".metric-value").textContent});
+ set(c[0],sat!=null&&sat>=tS,sat,"Clinicians rating reports 4+ · target ≥ "+tS+"%",`<span>•</span> ${M.ratings.length} rating(s) · baseline <input id="clB2" type="number" value="${M.base.sat}" ${inp}>%`);
+ set(c[1],or!=null&&or<=tO,or,"Critical alert override rate · target ≤ "+tO+"%",`<span>•</span> ${M.over} of ${M.crit} overridden · baseline <input id="clB1" type="number" value="${M.base.over}" ${inp}>%`);
+ set(c[2],acc!=null&&acc>=90,acc,"Clinician-verified summary accuracy · target ≥ 90%",`<span>•</span> ${M.acc.length} summary check(s)`);
+ if(!document.getElementById("clAdeCard"))c[2].insertAdjacentHTML("afterend",`<section class="card metric" id="clAdeCard"><div class="card-head"><div class="card-title">Adverse drug events</div><span class="pill neutral">Pilot</span></div><div class="metric-value" id="clAdeVal"></div><div class="metric-label">Events per 1,000 prescriptions (enter from pilot data)</div><div class="metric-foot"><span>•</span> Figure <input id="clAde" type="number" ${inp}></div></section>`);
+ document.getElementById("clAdeVal").textContent=M.ade===""?"—":M.ade;const ai=document.getElementById("clAde");if(ai&&document.activeElement!==ai)ai.value=M.ade}
+document.addEventListener("change",e=>{const t=e.target;if(t.id==="clB1"){M.base.over=+t.value;saveM();renderMetrics()}if(t.id==="clB2"){M.base.sat=+t.value;saveM();renderMetrics()}if(t.id==="clAde"){M.ade=t.value;saveM();renderMetrics()}});
+renderMetrics();
+async function loadMetrics(){if(!(sb()&&uid()))return;try{const[a,d,f]=await Promise.all([sb().from("assessments").select("critical_count"),sb().from("alert_decisions").select("patient_code,finding_id,decision").eq("level","Critical"),sb().from("feedback").select("kind,value")]);if(a.error||d.error||f.error)return;
+ M.crit=a.data.reduce((n,r)=>n+(r.critical_count||0),0);M.over=new Set(d.data.filter(r=>r.decision==="overridden").map(r=>r.patient_code+"|"+r.finding_id)).size;
+ M.ratings=f.data.filter(r=>r.kind==="rating").map(r=>r.value);M.acc=f.data.filter(r=>r.kind==="accuracy").map(r=>!!r.value);renderMetrics()}catch(e){console.warn(e)}}
+window.__onSession=loadMetrics;
+// --- FHIR import on new-analysis page
+document.querySelector("#page-new-analysis")?.insertAdjacentHTML("beforeend",`<section class="card" style="margin-top:14px"><div class="card-head"><div class="card-title">Import from EHR (FHIR)</div><span class="pill neutral">Optional</span></div><p class="muted tiny">Paste a FHIR Bundle of MedicationRequest resources, or read from a FHIR server. A SMART on FHIR bearer token is optional.</p><div class="form-grid"><div class="field wide"><label for="fhJson">FHIR Bundle</label><textarea id="fhJson" rows="3" placeholder='{"resourceType":"Bundle","entry":[...]}'></textarea></div><div class="field"><label for="fhBase">FHIR base URL</label><input id="fhBase" placeholder="https://hapi.fhir.org/baseR4"></div><div class="field"><label for="fhPid">Patient ID</label><input id="fhPid"></div><div class="field wide"><label for="fhTok">Bearer token (optional)</label><input id="fhTok"></div></div><div class="form-actions" style="margin-top:12px"><button class="secondary" type="button" data-fi="sample">Use sample bundle</button><button class="secondary" type="button" data-fi="paste">Import pasted bundle</button><button class="primary" type="button" data-fi="server">Fetch from server</button></div></section>`);
+async function fhirImport(mode){if(mode==="sample"){document.getElementById("fhJson").value=JSON.stringify({resourceType:"Bundle",entry:["Warfarin","Aspirin","Ibuprofen"].map(n=>({resource:{resourceType:"MedicationRequest",medicationCodeableConcept:{text:n}}}))},null,1);return}
+ try{let b;if(mode==="paste"){const v=document.getElementById("fhJson").value.trim();if(!v)return toast("Paste a FHIR Bundle first, or click Use sample bundle.");b=JSON.parse(v)}else{const u=document.getElementById("fhBase").value.replace(/\/$/,""),p=document.getElementById("fhPid").value.trim(),t=document.getElementById("fhTok").value.trim();if(!u||!p)return toast("Enter a FHIR base URL and patient ID.");b=await(await fetch(`${u}/MedicationRequest?patient=${encodeURIComponent(p)}&_count=50`,{headers:{Accept:"application/fhir+json",...(t?{Authorization:"Bearer "+t}:{})}})).json()}
+ const n=[...new Set((b.entry||[]).map(x=>x.resource).filter(r=>r?.resourceType==="MedicationRequest").map(r=>r.medicationCodeableConcept?.text||r.medicationCodeableConcept?.coding?.[0]?.display).filter(Boolean))];
+ n.forEach(addMedication);log("EHR import",n.length+" medication(s) via FHIR");toast(n.length?"Imported "+n.length+" medication(s). Unknown names need review.":"No MedicationRequest entries found.")}catch(err){toast(err instanceof SyntaxError?"That text is not valid FHIR JSON.":"FHIR import failed: "+err.message)}}
+// --- optional DrugBank proxy hook: window.CLARITY_SUPABASE_CONFIG.drugbankProxy = "https://your-backend/drugbank"
+
+}
+})();
+</script>
+<script src="./supabase-config.js"></script>
+<script>
+(function(){
+  const landing=document.getElementById('clarityLanding'), authScreen=document.getElementById('clarityAuth'), dashboard=document.getElementById('clarityDashboard'), sessionBar=document.getElementById('claritySessionBar'), signedInAs=document.getElementById('claritySignedInAs'), form=document.getElementById('clarityAuthForm'), loginTab=document.getElementById('clarityLoginTab'), signupTab=document.getElementById('claritySignupTab'), nameField=document.getElementById('clarityNameField'), fullName=document.getElementById('clarityFullName'), email=document.getElementById('clarityEmail'), password=document.getElementById('clarityPassword'), title=document.getElementById('clarityAuthTitle'), sub=document.getElementById('clarityAuthSub'), submit=document.getElementById('clarityAuthSubmit'), message=document.getElementById('clarityAuthMessage'), configNote=document.getElementById('clarityAuthConfigNote');
+  let mode='login', supabase=null, currentSession=null; window.__sb=null; window.__sess=null;
+  function showMessage(text,ok=false){message.textContent=text;message.classList.add('visible');message.style.borderLeftColor=ok?'#28734B':'#A96522';}
+  function clearMessage(){message.textContent='';message.classList.remove('visible');}
+  function setMode(next){mode=next;const signup=mode==='signup';loginTab.classList.toggle('active',!signup);signupTab.classList.toggle('active',signup);nameField.hidden=!signup;fullName.required=signup;password.autocomplete=signup?'new-password':'current-password';title.textContent=signup?'Create your account.':'Welcome back.';sub.textContent=signup?'Create an account to access your Clarity workspace.':'Sign in to continue to your workspace.';submit.textContent=signup?'Create account ↗':'Sign in ↗';clearMessage();}
+  function showLanding(){landing.hidden=false;authScreen.hidden=true;dashboard.hidden=true;sessionBar.hidden=true;window.scrollTo({top:0,behavior:'auto'});}
+  function showAuth(){landing.hidden=true;authScreen.hidden=false;dashboard.hidden=true;sessionBar.hidden=true;clearMessage();window.scrollTo({top:0,behavior:'auto'});}
+  function showDashboard(session){currentSession=session;window.__sess=session;window.__sb=supabase;setTimeout(()=>window.__onSession&&window.__onSession(),300);landing.hidden=true;authScreen.hidden=true;dashboard.hidden=false;sessionBar.hidden=true;signedInAs.textContent=session?.user?.email?`Signed in as ${session.user.email}`:'Signed in';window.scrollTo({top:0,behavior:'auto'});if(session)loadPatientsFromSupabase(session);}
+  document.querySelectorAll('[data-enter-dashboard]').forEach(button=>button.addEventListener('click',showAuth));
+  document.querySelector('[data-scroll-approach]').addEventListener('click',()=>document.getElementById('landingApproach').scrollIntoView({behavior:'smooth',block:'start'}));
+  document.querySelector('.landing-brand').addEventListener('click',e=>{e.preventDefault();showLanding();});
+  document.getElementById('clarityBackLanding').addEventListener('click',showLanding);
+  loginTab.addEventListener('click',()=>setMode('login'));signupTab.addEventListener('click',()=>setMode('signup'));
+  document.getElementById('claritySignOut').addEventListener('click',async()=>{if(!supabase){showAuth();return;}const {error}=await supabase.auth.signOut();if(error){showMessage(error.message);return;}currentSession=null;showAuth();});
+  const accountToggle=document.getElementById('clarityAccountToggle');
+  accountToggle?.addEventListener('click',e=>{e.stopPropagation();sessionBar.hidden=!sessionBar.hidden;accountToggle.setAttribute('aria-expanded',String(!sessionBar.hidden));});
+  sessionBar.addEventListener('click',e=>e.stopPropagation());
+  document.addEventListener('click',()=>{sessionBar.hidden=true;accountToggle?.setAttribute('aria-expanded','false');});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){sessionBar.hidden=true;accountToggle?.setAttribute('aria-expanded','false');}});
+  const config=window.CLARITY_SUPABASE_CONFIG||{};const configured=Boolean(config.url&&config.anonKey&&!String(config.url).includes('YOUR_PROJECT')&&!String(config.anonKey).includes('YOUR_'));
+  if(window.supabase&&configured){supabase=window.supabase.createClient(config.url,config.anonKey);configNote.hidden=true;supabase.auth.getSession().then(({data,error})=>{if(error){showMessage(error.message);return;}if(data.session)showDashboard(data.session);else showLanding();});supabase.auth.onAuthStateChange((_event,session)=>{if(session)showDashboard(session);else if(currentSession){currentSession=null;showLanding();}});}
+  form.addEventListener('submit',async e=>{e.preventDefault();clearMessage();if(!supabase){showMessage('Authentication is not connected yet. Add your Supabase Project URL and publishable key in supabase-config.js; this form will not pretend to sign you in.');return;}submit.disabled=true;submit.textContent='Please wait…';try{if(mode==='signup'){const {data,error}=await supabase.auth.signUp({email:email.value.trim(),password:password.value,options:{data:{display_name:fullName.value.trim()}}});if(error)throw error;if(data.session){showDashboard(data.session);}else{showMessage('Account created. Check your email to confirm the account, then sign in.',true);setMode('login');}}else{const {data,error}=await supabase.auth.signInWithPassword({email:email.value.trim(),password:password.value});if(error)throw error;showDashboard(data.session);}}catch(error){showMessage(error?.message||'Authentication failed.');}finally{submit.disabled=false;submit.textContent=mode==='signup'?'Create account ↗':'Sign in ↗';}});
+})();
+</script>
+</body>
+</html>
